@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IDB Lab 2019 Operations Footprint Story</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+       integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+       crossorigin=""/>
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+       crossorigin=""></script>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.min.css" integrity="sha256-/oZ7h/Jkj6AfibN/zTWrCoba0L+QhP9Tf/ZSgyZJCnY=" crossorigin="anonymous" />
+
+    <!-- https://stackoverflow.com/questions/17341122/link-and-execute-external-javascript-file-hosted-on-github -->
+	<script src="https://cdn.jsdelivr.net/gh/calvinmetcalf/leaflet-ajax/dist/leaflet.ajax.min.js" crossorigin=""></script>
+	
+	
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes"></script>
+  
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	
+	<script src="https://kit.fontawesome.com/405c641c6b.js" crossorigin="anonymous"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	
+
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+
+    <link rel="stylesheet" href="./lib/MarkerCluster.css" />
+  	<link rel="stylesheet" href="./lib/MarkerCluster.Default.css" />
+  	
+	<link rel="stylesheet" href="./story.css" />
+	
+	<!-- Scrollbar Custom CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+  	<script src="./lib/leaflet.markercluster-src.js"></script>
+	<script src="./lib/Leaflet.CheapLayerAt.js"></script>
+	
+    <!-- https://docs.mapbox.com/mapbox.js/example/v1.0.0/custom-popup-style/  -->
+	<!-- https://bootstrapious.com/p/bootstrap-sidebar -->
+	
+	<link href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css" rel="stylesheet">
+
+	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/export/bootstrap-table-export.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js" integrity="sha256-fOPHmaamqkHPv4QYGxkiSKm7O/3GAJ4554pQXYleoLo=" crossorigin="anonymous"></script>
+	
+
+</head>
+<body data-spy="scroll" data-target="#navbar-example2" data-offset="50">
+
+    
+<nav id="navbar-example2" class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+  <a class="navbar-brand" id="country-link" href="./geodashboard?skip=1&country=ARG">GeoDashboard</a>
+  
+  <div class="container">
+	<div class="row">
+		<div class="col-sm-12 col-sm-offset-4"><!--width is set by this div -->
+  		  <div class="input-group input-group-sm">
+			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_ISO_A3">&nbsp; Country &nbsp; </label>
+			  </div>
+			  <select class="custom-select" id="GSELECT_ISO_A3">
+				<option selected value="ARG" data-att-1="ISO_A3" data-val-1="ARG">Argentina</option>
+				<option value="BHS" data-att-1="ISO_A3" data-val-1="BHS">Bahamas</option>
+				<option value="BRB" data-att-1="ISO_A3" data-val-1="BRB">Barbados</option>
+				<option value="BLZ" data-att-1="ISO_A3" data-val-1="BLZ">Belize</option>
+				<option value="BOL" data-att-1="ISO_A3" data-val-1="BOL">Bolivia</option>
+				<option value="BRA" data-att-1="ISO_A3" data-val-1="BRA">Brazil</option>
+				<option value="CHL" data-att-1="ISO_A3" data-val-1="CHL">Chile</option>
+				<option value="COL" data-att-1="ISO_A3" data-val-1="COL">Colombia</option>
+				<option value="CRI" data-att-1="ISO_A3" data-val-1="CRI">Costa Rica</option>
+				<option value="DOM" data-att-1="ISO_A3" data-val-1="DOM">Dominican Republic</option>
+				<option value="ECU" data-att-1="ISO_A3" data-val-1="ECU">Ecuador</option>
+				<option value="SLV" data-att-1="ISO_A3" data-val-1="SLV">El Salvador</option>
+				<option value="GTM" data-att-1="ISO_A3" data-val-1="GTM">Guatemala</option>
+				<option value="GUY" data-att-1="ISO_A3" data-val-1="GUY">Guyana</option>
+				<option value="HTI" data-att-1="ISO_A3" data-val-1="HTI">Haiti</option>
+				<option value="HND" data-att-1="ISO_A3" data-val-1="HND">Honduras</option>
+				<option value="JAM" data-att-1="ISO_A3" data-val-1="JAM">Jamaica</option>
+				<option value="MEX" data-att-1="ISO_A3" data-val-1="MEX">Mexico</option>
+				<option value="NIC" data-att-1="ISO_A3" data-val-1="NIC">Nicaragua</option>
+				<option value="PAN" data-att-1="ISO_A3" data-val-1="PAN">Panama</option>
+				<option value="PRY" data-att-1="ISO_A3" data-val-1="PRY">Paraguay</option>
+				<option value="PER" data-att-1="ISO_A3" data-val-1="PER">Peru</option>
+				<option value="REG" data-att-1="ISO_A3" data-val-1="REG">Regional & Reg. support</option>
+				<option value="SUR" data-att-1="ISO_A3" data-val-1="SUR">Suriname</option>
+				<option value="TTO" data-att-1="ISO_A3" data-val-1="TTO">Trinidad and Tobago</option>
+				<option value="URY" data-att-1="ISO_A3" data-val-1="URY">Uruguay</option>
+			  </select>
+			</div>
+		  </div>
+
+	   </div>
+	   
+	   		  <div class="col-sm-18 col-sm-offset-12">
+			  <ul class="nav nav-pills">
+				<li class="nav-item">
+				  <a class="nav-link" href="#LEGACY_TEXT">Legacy operations</a>
+				</li>
+				<li class="nav-item">
+				  <a class="nav-link" href="#NEW_TEXT">Newly approved</a>
+				</li>
+				<li class="nav-item dropdown">
+				  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Total</a>
+				  <div class="dropdown-menu">
+					<a class="dropdown-item" href="#TOTAL_TEXT_G1">Conclusion graph 1</a>
+					<div role="separator" class="dropdown-divider"></div>
+					<a class="dropdown-item" href="#TOTAL_TEXT_G2">Conclusion graph 2</a>
+				  </div>
+				</li>
+			  </ul>
+		  </div>
+	   
+	</div>
+			
+  
+
+</nav>
+			
+		<div style="padding-top:70px;padding-bottom:70px">
+			<div id="LEGACY_TEXT">
+				<h4 id="country">IDB Lab 2019</h4>
+				<h4 id="legacy">Operations approved before 2019</h4>
+				<p>
+				Retrieving data...
+				</p>
+			</div>
+			<p>
+				<div  class="chart-container" style="height:400px;">
+					<canvas id="chartCanvas_LEGACY"></canvas>
+				</div>
+			</p>
+
+            <div class="line"></div>
+
+            <h4 id="legacy_MIF">IDB Lab Focus codes undisbursed amount evolution for legacies operations approved before 2019</h4>
+			<p>
+				<div  class="chart-container" style="height:400px;">
+					<canvas id="chartCanvas_LEGACY_MIF"></canvas>
+				</div>
+			</p>
+
+            <div class="line"></div>
+
+            <div id="NEW_TEXT">
+				<h4 id="country">IDB Lab 2019</h4>
+				<h4 id="legacy">Operations approved during 2019</h4>
+				<p>
+				Retrieving data...
+				</p>
+			</div>
+			<p>
+				<div  class="chart-container" style="height:400px;">
+					<canvas id="chartCanvas_NEW"></canvas>
+				</div>
+			</p>
+			<h4 id="legacy_MIF">IDB Lab Focus codes undisbursed amount evolution for newly approved operations in 2019</h4>
+			<p>
+				<div  class="chart-container" style="height:400px;">
+					<canvas id="chartCanvas_NEW_MIF"></canvas>
+				</div>
+			</p>
+            <div class="line"></div>
+
+
+            <div id="TOTAL_TEXT">
+				<h4 id="country">IDB Lab 2019</h4>
+				<h4 id="legacy">All operations 2019 footprint</h4>
+				<p>
+				Retrieving data...
+				</p>
+			</div>
+			<p>
+				<div id="TOTAL_TEXT_G1" class="chart-container" style="height:400px;">
+					<canvas id="chartCanvas_CONCLUSION"></canvas>
+				</div>
+			</p>
+			<p>
+				<div  class="chart-container" style="height:400px;">
+					<canvas id="chartCanvas_CONCLUSION_MIF"></canvas>
+				</div>
+			</p>				
+			<div id="TOTAL_TEXT_G2" style="text-align:center; display: flex; justify-content: center;">
+				<div  class="chart-container" style="height:400px; width:50%; ">
+					<canvas id="chartCanvas_CONCLUSION_1"></canvas>
+				</div>
+				
+				<div  class="chart-container" style="height:400px; width:50%; ">
+					<canvas id="chartCanvas_CONCLUSION_2"></canvas>
+				</div>
+			</div>				
+			<div class="line"></div>
+        </div>
+
+<script src="./idblabmap-filter.js"></script>
+<script src="./idblabmap-charts.js"></script>
+<script src="./idblabmap-story.js"></script>
+
+<script id="template-1" type="text/template">
+            <h4 id="country">IDB Lab {{OP_SUMMARY.year}} in {{OP_SUMMARY.country}}</h4>
+            <h4 id="legacy">Operations approved before {{OP_SUMMARY.year}}</h4>
+			<p>
+				In {{OP_SUMMARY.year}} and in {{OP_SUMMARY.country}} there was already <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) active(s). From wich :
+				<ul>
+					<li>{{OP_SUMMARY.0.AF}} operation(s) approved and funded.</li>
+					<li>{{OP_SUMMARY.0.SI}} operation(s) signed.</li>
+					<li>{{OP_SUMMARY.0.EF}} operation(s) effective(s).</li>
+					<li>{{OP_SUMMARY.0.EL}} operation(s) eligible(s).</li>
+					<li>{{OP_SUMMARY.0.DI}} operation(s) in disbursements phase.</li>
+					<li>{{OP_SUMMARY.0.FD}} operation(s) in fully disbursed phase.</li>
+				</ul>
+			</p>
+			<p>
+				During this year, {{OP_SUMMARY.WAS_CLOSED}} were closed. From wich :
+				<ul>
+					<li>{{OP_SUMMARY.12.CA}} operation(s) were cancelled.</li>
+					<li>{{OP_SUMMARY.12.CO}} operation(s) were closed for operation.</li>
+					<li>{{OP_SUMMARY.12.CF}} operation(s) were closed for finance.</li>
+				</ul>
+			</p>
+            <p>
+				<div style="display: flex; ">
+				<div class="chart-container" style="height:300px; width:66%; ">
+				<p>Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) started with an undisbursed amount of {{OP_SUMMARY.0.U}} USD$ eq. and was reduced to {{OP_SUMMARY.12.U}} USD$ eq. for a difference of {{OP_SUMMARY.d.U}} USD$ eq including:</p>
+				<p> <ul>
+						<li>{{OP_SUMMARY.dp.C}} - {{OP_SUMMARY.dn.C}} USD$ eq. <b>cancelled</b> for a total difference of {{OP_SUMMARY.d.C}} USD$ eq.</li>
+						<li>{{OP_SUMMARY.dp.D}} - {{OP_SUMMARY.dn.D}} USD$ eq. <b>disbursed</b> for a total difference of {{OP_SUMMARY.d.D}} USD$ eq.</li>
+						<li>{{OP_SUMMARY.dp.A}} - {{OP_SUMMARY.dn.A}} USD$ eq. <b>current approved amount</b> for a total difference of {{OP_SUMMARY.d.A}}* USD$ eq.
+						<br /> * Excluding the Approved amount reduction from cancellation, it's a total of {{OP_SUMMARY.d.C-OP_SUMMARY.d.A}} USD$ eq of current approved amount modification.</li>
+					</ul> </p>
+				</div>
+				<div  class="chart-container" style="height:300px; width:34%; ">
+					<canvas id="chartCanvas_LEGACY_small1"></canvas>
+				</div>
+			</div>
+			</p>
+			<p>
+				Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) show an undisbursed amount of {{OP_SUMMARY.12.U}} USD$ eq. still avaible to disburse for next year.
+			</p>
+</script>
+
+<script id="template-2" type="text/template">
+            <h4 id="country">IDB Lab {{OP_SUMMARY.year}} in {{OP_SUMMARY.country}}</h4>
+            <h4 id="legacy">Operations approved during {{OP_SUMMARY.year}}</h4>
+			<p>
+				In {{OP_SUMMARY.year}} and in {{OP_SUMMARY.country}}, <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) were approved. At the end of the year they already reached :
+				<ul>
+					<li>{{OP_SUMMARY.12.AF}} operation(s) approved and funded.</li>
+					<li>{{OP_SUMMARY.12.SI}} operation(s) signed.</li>
+					<li>{{OP_SUMMARY.12.EF}} operation(s) effective(s).</li>
+					<li>{{OP_SUMMARY.12.EL}} operation(s) eligible(s).</li>
+					<li>{{OP_SUMMARY.12.DI}} operation(s) in disbursements phase.</li>
+					<li>{{OP_SUMMARY.12.FD}} operation(s) in fully disbursed phase.</li>
+					<li>{{OP_SUMMARY.12.CA}} operation(s) were cancelled.</li>
+					<li>{{OP_SUMMARY.12.CO}} operation(s) were closed for operation.</li>
+					<li>{{OP_SUMMARY.12.CF}} operation(s) were closed for finance.</li>					
+				</ul>
+			</p>
+            <p>
+				<div style="display: flex; ">
+				<div class="chart-container" style="height:300px; width:66%; ">
+				<p>Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) with a total of approved amount of {{OP_SUMMARY.12.A}} USD$ eq. and was already reduced to {{OP_SUMMARY.12.U}} USD$ eq.</p>
+				<p> <ul>
+						<li>{{OP_SUMMARY.dp.C}} - {{OP_SUMMARY.dn.C}} USD$ eq. <b>cancelled</b> for a total difference of {{OP_SUMMARY.d.C}} USD$ eq.</li>
+						<li>{{OP_SUMMARY.dp.D}} - {{OP_SUMMARY.dn.D}} USD$ eq. <b>disbursed</b> for a total difference of {{OP_SUMMARY.d.D}} USD$ eq.</li>
+						<li>{{OP_SUMMARY.dp.A}} - {{OP_SUMMARY.dn.A}} USD$ eq. <b>current approved amount</b> for a total difference of {{OP_SUMMARY.d.A}}* USD$ eq.
+						<br /> * Excluding the Approved amount reduction from cancellation, it's a total of {{OP_SUMMARY.d.C-OP_SUMMARY.d.A}} USD$ eq of current approved amount modification.</li>
+					</ul> </p>
+				</div>
+				<div  class="chart-container" style="height:300px; width:34%; ">
+					<canvas id="chartCanvas_LEGACY_small2"></canvas>
+				</div>
+			</div>
+			</p>
+			<p>
+				Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) show an undisbursed amount of {{OP_SUMMARY.12.U}} USD$ eq. still avaible to disburse for next year.
+			</p>
+</script>
+
+<script id="template-3" type="text/template">
+            <h4 id="country">IDB Lab {{OP_SUMMARY.year}} in {{OP_SUMMARY.country}}</h4>
+            <h4 id="legacy">All operations concerning {{OP_SUMMARY.year}}</h4>
+			<p>
+				In {{OP_SUMMARY.year}} and in {{OP_SUMMARY.country}}, <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) were active at least one month of the year. At the end of the year they reached :
+				<ul>
+					<li>{{OP_SUMMARY.12.AF}} operation(s) approved and funded.</li>
+					<li>{{OP_SUMMARY.12.SI}} operation(s) signed.</li>
+					<li>{{OP_SUMMARY.12.EF}} operation(s) effective(s).</li>
+					<li>{{OP_SUMMARY.12.EL}} operation(s) eligible(s).</li>
+					<li>{{OP_SUMMARY.12.DI}} operation(s) in disbursements phase.</li>
+					<li>{{OP_SUMMARY.12.FD}} operation(s) in fully disbursed phase.</li>
+					<li>{{OP_SUMMARY.12.CA}} operation(s) were cancelled.</li>
+					<li>{{OP_SUMMARY.12.CO}} operation(s) were closed for operation.</li>
+					<li>{{OP_SUMMARY.12.CF}} operation(s) were closed for finance.</li>					
+				</ul>
+			</p>
+            <p>
+				<div style="display: flex; ">
+				<div class="chart-container" style="height:300px; width:66%; ">
+				<p>Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) with a total of approved amount of {{OP_SUMMARY.12.A}} USD$ eq. and was already reduced to {{OP_SUMMARY.12.U}} USD$ eq.</p>
+				<p> <ul>
+						<li>{{OP_SUMMARY.dp.C}} - {{OP_SUMMARY.dn.C}} USD$ eq. <b>cancelled</b> for a total difference of {{OP_SUMMARY.d.C}} USD$ eq.</li>
+						<li>{{OP_SUMMARY.dp.D}} - {{OP_SUMMARY.dn.D}} USD$ eq. <b>disbursed</b> for a total difference of {{OP_SUMMARY.d.D}} USD$ eq.</li>
+						<li>{{OP_SUMMARY.dp.A}} - {{OP_SUMMARY.dn.A}} USD$ eq. <b>current approved amount</b> for a total difference of {{OP_SUMMARY.d.A}}* USD$ eq.
+						<br /> * Excluding the Approved amount reduction from cancellation, it's a total of {{OP_SUMMARY.d.C-OP_SUMMARY.d.A}} USD$ eq of current approved amount modification.</li>
+					</ul> </p>
+				</div>
+				<div  class="chart-container" style="height:300px; width:34%; ">
+					<canvas id="chartCanvas_LEGACY_small3"></canvas>
+				</div>
+			</div>
+			</p>
+			<p>
+				Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) show an undisbursed amount of {{OP_SUMMARY.12.U}} USD$ eq. still avaible to disburse for next year.
+			</p>
+</script>
+
+
+</body>
+</html>

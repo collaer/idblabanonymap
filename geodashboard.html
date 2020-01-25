@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IDB Lab 2019 Operations Footprint Map</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+       integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+       crossorigin=""/>
+     <!-- Make sure you put this AFTER Leaflet's CSS -->
+     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+       integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+       crossorigin=""></script>
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/introjs.min.css" integrity="sha256-/oZ7h/Jkj6AfibN/zTWrCoba0L+QhP9Tf/ZSgyZJCnY=" crossorigin="anonymous" />
+
+    <!-- https://stackoverflow.com/questions/17341122/link-and-execute-external-javascript-file-hosted-on-github -->
+	<script src="https://cdn.jsdelivr.net/gh/calvinmetcalf/leaflet-ajax/dist/leaflet.ajax.min.js" crossorigin=""></script>
+	
+	
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="   crossorigin="anonymous"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-colorschemes"></script>
+  
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	
+	<script src="https://kit.fontawesome.com/405c641c6b.js" crossorigin="anonymous"></script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	
+
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+
+    <link rel="stylesheet" href="./lib/MarkerCluster.css" />
+  	<link rel="stylesheet" href="./lib/MarkerCluster.Default.css" />
+  	<link rel="stylesheet" href="./idblabmap.css" />
+	
+	<!-- Scrollbar Custom CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+
+  	<script src="./lib/leaflet.markercluster-src.js"></script>
+	<script src="./lib/Leaflet.CheapLayerAt.js"></script>
+	
+    <!-- https://docs.mapbox.com/mapbox.js/example/v1.0.0/custom-popup-style/  -->
+	<!-- https://bootstrapious.com/p/bootstrap-sidebar -->
+	
+	<link href="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.css" rel="stylesheet">
+
+	<script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
+	<script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/bootstrap-table.min.js"></script>
+	<script src="https://unpkg.com/bootstrap-table@1.15.5/dist/extensions/export/bootstrap-table-export.min.js"></script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.min.js" integrity="sha256-fOPHmaamqkHPv4QYGxkiSKm7O/3GAJ4554pQXYleoLo=" crossorigin="anonymous"></script>
+	
+
+</head>
+<body>
+
+
+<div class="wrapper" id="allPage">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+			
+		  <!-- Filters options form -->
+		  <div class="form-group">
+
+		  <div class="input-group mb-3">
+			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_STATUS_SELECT">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Scope" data-content="Defining here wich operations will be taken in account. 
+				All actives means that each operation was in ACTIVE statys at one time in 2019, at least 1 day during 2019 (either in 31/12/2018 or last balance of 2019).
+				Actives without FD: Only considering actives but not just fully disbursed FD.
+				Only DI : Only considering operations that were at least in Disbursment phase during at least one day of 2019.
+				Only DI or EL: Only considering operations that were at least in Disbursment or Elegibility phase during at least one day of 2019.
+				"><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; Scope
+				</label>
+			  </div>
+			  <select class="custom-select" id="GSELECT_STATUS_SELECT">
+				<option selected value="0" data-att-1="STATUS_SELECT" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="" data-att-3="NO_TRANSACTIONS" data-val-3="">Todas activas</option>
+				<option value="1" data-att-1="STATUS_SELECT" data-val-1="IN{'DI', 'EF', 'EL', 'AF', 'SI')" >Activas sin FD</option>
+				<option value="2" data-att-1="STATUS_SELECT" data-val-1="IN('DI')" >Unicamente DI</option>
+				<option value="3" data-att-1="STATUS_SELECT" data-val-1="IN('DI', 'EL')" >Unicamente DI y EL</option>
+			  </select>
+			</div>
+			
+		  <div class="input-group mb-3 introjs-fixparent" id="GSELECT_WAS_CLOSED_INPUTGROUP">
+			  <div class="input-group-prepend introjs-showElement">
+				<label class="input-group-text introjs-showElement" for="GSELECT_WAS_CLOSED">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="LifeCycle" data-content="Filter operations based on what happened to them during 2019
+				Approved in 2019, Not approved in 2019, went inactive (CO, CF or CA), went fully disbursed in 2019 and still not closed at the end of 2019, Closed, 
+				Crossing means that were active before and still active after 2019, with or without tr means financial transactions as disbursments or cancellations."><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; LifeCycle &nbsp;
+				</label>
+			  </div>
+			  <select class="custom-select introjs-showElement" id="GSELECT_WAS_CLOSED">
+				<option selected value="0" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="" data-att-3="NO_TRANSACTIONS" data-val-3="">Todos</option>
+				<option value="1" data-att-1="WAS_OPEN" data-val-1="1" data-att-2="WAS_CLOSED" data-val-2="" data-att-3="NO_TRANSACTIONS" data-val-3="">Approved in 2019</option>
+				<option value="-1" data-att-1="WAS_OPEN" data-val-1="0" data-att-2="WAS_CLOSED" data-val-2="" data-att-3="NO_TRANSACTIONS" data-val-3="">Approved before 2019</option>
+				<option value="20" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="CF,CO,1" data-att-3="NO_TRANSACTIONS" data-val-3="">Closed in 2019</option>
+				<option value="21" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="FD" data-att-3="NO_TRANSACTIONS" data-val-3="">Fully Disb in 2019</option>
+				<option value="22" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="CO" data-att-3="NO_TRANSACTIONS" data-val-3="">Closed for Operation in 2019</option>
+				<option value="23" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="CF" data-att-3="NO_TRANSACTIONS" data-val-3="">Closed for finance in 2019</option>
+				<option value="24" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="FD,CF,CO,1" data-att-3="NO_TRANSACTIONS" data-val-3="">Closed or FD in 2019</option>
+				<option value="3" data-att-1="WAS_OPEN" data-val-1="0" data-att-2="WAS_CLOSED" data-val-2="0," data-att-3="NO_TRANSACTIONS" data-val-3="">Crossing 2019</option>
+				<option value="4" data-att-1="WAS_OPEN" data-val-1="0" data-att-2="WAS_CLOSED" data-val-2="0," data-att-3="NO_TRANSACTIONS" data-val-3="0">Crossing 2019, with tr.</option>
+				<option value="5" data-att-1="WAS_OPEN" data-val-1="0" data-att-2="WAS_CLOSED" data-val-2="0," data-att-3="NO_TRANSACTIONS" data-val-3="1">Crossing 2019, without tr.</option>
+			  </select>
+			</div>
+
+		  <div class="input-group mb-3">
+			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_FOCUS_CD">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="MIF Category" data-content="Corresponds to the FOMIN FOCUS AREA of the project in Convergence."><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; MIF Category &nbsp; <a href="#" title="MIF Category Chart" id="MIFCategory_chart" data-toggle="chartWindow" data-target="#chartModalWindow" ><span class="fas fa-chart-pie fa-xs"></span></a>
+				</label>
+			  </div>
+			  <select class="custom-select" id="GSELECT_FOCUS_CD">
+				<option selected value="0" data-att-1="FOCUS_CD" data-val-1="">Todos</option>
+				<option value="ICI" data-att-1="FOCUS_CD" data-val-1="ICI">Inclusive cities</option>
+				<option value="KEC" data-att-1="FOCUS_CD" data-val-1="KEC">Knowledge economy</option>
+				<option value="CSA" data-att-1="FOCUS_CD" data-val-1="CSA">Climate-Smart Agriculture</option>
+				<option value="NA" data-att-1="FOCUS_CD" data-val-1="NA">Does not Apply</option>
+				<option value="ND" data-att-1="FOCUS_CD" data-val-1="ND">Not defined</option>
+			  </select>
+			</div>
+
+		  <div class="input-group mb-3">
+			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_REGION_CD">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Region" data-content="Corresponds to the REGION code from Convergence."><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; Region &nbsp; <a href="#" title="Region Chart" id="region_chart" data-toggle="chartWindow" data-target="#chartModalWindow" ><span class="fas fa-chart-pie fa-xs"></span></a>
+				</label>
+			  </div>
+			  <select class="custom-select" id="GSELECT_REGION_CD">
+				<option selected value="0" data-att-1="REGION_CD" data-val-1="">Todas</option>
+				<option value="CSC" data-att-1="REGION_CD" data-val-1="CSC">CSC</option>
+				<option value="CID" data-att-1="REGION_CD" data-val-1="CID">CID</option>
+				<option value="CAN" data-att-1="REGION_CD" data-val-1="CAN">CAN</option>
+				<option value="CCB" data-att-1="REGION_CD" data-val-1="CCB">CCB</option>
+				<option value="REG" data-att-1="REGION_CD" data-val-1="REG">REG</option>
+			  </select>
+			</div>
+
+		  <div class="input-group mb-3">
+			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_ISO_A3">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Region" data-content="Corresponds to the REGION code from Convergence."><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; Country &nbsp; <a href="#" title="Country Chart" id="country_chart" data-toggle="chartWindow" data-target="#chartModalWindow" ><span class="fas fa-chart-pie fa-xs"></span></a>
+				</label>
+			  </div>
+			  <select class="custom-select" id="GSELECT_ISO_A3">
+				<option selected value="0" data-att-1="ISO_A3" data-val-1="">Todos</option>
+				<option value="ARG" data-att-1="ISO_A3" data-val-1="ARG">Argentina</option>
+				<option value="BHS" data-att-1="ISO_A3" data-val-1="BHS">Bahamas</option>
+				<option value="BRB" data-att-1="ISO_A3" data-val-1="BRB">Barbados</option>
+				<option value="BLZ" data-att-1="ISO_A3" data-val-1="BLZ">Belize</option>
+				<option value="BOL" data-att-1="ISO_A3" data-val-1="BOL">Bolivia</option>
+				<option value="BRA" data-att-1="ISO_A3" data-val-1="BRA">Brazil</option>
+				<option value="CHL" data-att-1="ISO_A3" data-val-1="CHL">Chile</option>
+				<option value="COL" data-att-1="ISO_A3" data-val-1="COL">Colombia</option>
+				<option value="CRI" data-att-1="ISO_A3" data-val-1="CRI">Costa Rica</option>
+				<option value="DOM" data-att-1="ISO_A3" data-val-1="DOM">Dominican Republic</option>
+				<option value="ECU" data-att-1="ISO_A3" data-val-1="ECU">Ecuador</option>
+				<option value="SLV" data-att-1="ISO_A3" data-val-1="SLV">El Salvador</option>
+				<option value="GTM" data-att-1="ISO_A3" data-val-1="GTM">Guatemala</option>
+				<option value="GUY" data-att-1="ISO_A3" data-val-1="GUY">Guyana</option>
+				<option value="HTI" data-att-1="ISO_A3" data-val-1="HTI">Haiti</option>
+				<option value="HND" data-att-1="ISO_A3" data-val-1="HND">Honduras</option>
+				<option value="JAM" data-att-1="ISO_A3" data-val-1="JAM">Jamaica</option>
+				<option value="MEX" data-att-1="ISO_A3" data-val-1="MEX">Mexico</option>
+				<option value="NIC" data-att-1="ISO_A3" data-val-1="NIC">Nicaragua</option>
+				<option value="PAN" data-att-1="ISO_A3" data-val-1="PAN">Panama</option>
+				<option value="PRY" data-att-1="ISO_A3" data-val-1="PRY">Paraguay</option>
+				<option value="PER" data-att-1="ISO_A3" data-val-1="PER">Peru</option>
+				<option value="REG" data-att-1="ISO_A3" data-val-1="REG">Regional & Reg. support</option>
+				<option value="SUR" data-att-1="ISO_A3" data-val-1="SUR">Suriname</option>
+				<option value="TTO" data-att-1="ISO_A3" data-val-1="TTO">Trinidad and Tobago</option>
+				<option value="URY" data-att-1="ISO_A3" data-val-1="URY">Uruguay</option>
+			  </select>
+			</div>
+
+		  <div class="input-group mb-3">
+			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_SECTOR_CD">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Sector help" data-content="Sectors lists readable in Convergence but coming from LMS."><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; Sector</label>
+			  </div>
+			  <select class="custom-select" id="GSELECT_SECTOR_CD">
+				<option selected value="0" data-att-1="SECTOR_CD" data-val-1="">Todos</option>
+				<option value="AG" data-att-1="SECTOR_CD" data-val-1="AG">Agriculture</option>
+				<option value="AS" data-att-1="SECTOR_CD" data-val-1="AS">Water & Sanitation</option>
+				<option value="DU" data-att-1="SECTOR_CD" data-val-1="DU">Urban Development</option>
+				<option value="ED" data-att-1="SECTOR_CD" data-val-1="ED">Education</option>
+				<option value="EN" data-att-1="SECTOR_CD" data-val-1="EN">Energy</option>
+				<option value="FM" data-att-1="SECTOR_CD" data-val-1="FM">Financial Markets</option>
+				<option value="IN" data-att-1="SECTOR_CD" data-val-1="IN">Industry</option>
+				<option value="IS" data-att-1="SECTOR_CD" data-val-1="IS">Social Investment</option>
+				<option value="OT" data-att-1="SECTOR_CD" data-val-1="OT">Other</option>
+				<option value="PA" data-att-1="SECTOR_CD" data-val-1="PA">Climate Change</option>
+				<option value="PS" data-att-1="SECTOR_CD" data-val-1="PS">Private Enterprise</option>
+				<option value="RI" data-att-1="SECTOR_CD" data-val-1="RI">Regional Integration</option>
+				<option value="RM" data-att-1="SECTOR_CD" data-val-1="RM">Modernization of the State</option>
+				<option value="SA" data-att-1="SECTOR_CD" data-val-1="SA">Health</option>
+				<option value="ST" data-att-1="SECTOR_CD" data-val-1="ST">Science & Technology</option>
+				<option value="TD" data-att-1="SECTOR_CD" data-val-1="TD">Trade</option>
+				<option value="TR" data-att-1="SECTOR_CD" data-val-1="TR">Transportation</option>
+			  </select>
+			</div>
+
+		  <div class="input-group mb-3">
+			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_SECTOR">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="SubSector help" data-content="From the sectors list readable in Convergence but coming from LMS, they are sub-options depending on the Sector field selection. Sometimes some inconsistencies between dependency between thoose levels are present in the data."><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; SubSector</label>
+			  </div>
+			  <select class="custom-select" id="GSELECT_SECTOR">
+				<option selected value="0" data-att-1="SECTOR" data-sector-filter="ALL" data-val-1="">Todos</option>
+				<option value="1" data-sector-filter="AG" data-att-1="SECTOR" data-val-1="AG">AGRICULTURE AND RURAL DEVELOPMENT</option>
+				<option value="2" data-sector-filter="AG" data-att-1="SECTOR" data-val-1="AG-ADM">LAND ADMINISTRATION AND MANAGEMENT</option>
+				<option value="3" data-sector-filter="AG" data-att-1="SECTOR" data-val-1="AG-AGB">AGRIBUSINESS</option>
+				<option value="4" data-sector-filter="AG" data-att-1="SECTOR" data-val-1="AG-AGB">AGRICULTURE AND RURAL DEVELOPMENT</option>
+				<option value="5" data-sector-filter="AG" data-att-1="SECTOR" data-val-1="AG-AGB">SUSTAINABLE AGRICULTURAL DEVELOPMENT</option>
+				<option value="6" data-sector-filter="AG" data-att-1="SECTOR" data-val-1="AG-DEV">SUSTAINABLE AGRICULTURAL DEVELOPMENT</option>
+				<option value="7" data-sector-filter="AG" data-att-1="SECTOR" data-val-1="AG-RES">AGRICULTURAL RESEARCH AND INNOVATION</option>
+				<option value="8" data-sector-filter="AG" data-att-1="SECTOR" data-val-1="AG-TEC">AGRICULTURAL TECHNOLOGY ADOPTION</option>
+				<option value="9" data-sector-filter="AG" data-att-1="SECTOR" data-val-1="AG-TEC">AGRICULTURE AND RURAL DEVELOPMENT</option>
+				<option value="10" data-sector-filter="AS" data-att-1="SECTOR" data-val-1="AS-AGR">WATER SUPPLY RURAL AND PERI-URBAN</option>
+				<option value="11" data-sector-filter="AS" data-att-1="SECTOR" data-val-1="AS-AGU">WATER SUPPLY URBAN</option>
+				<option value="12" data-sector-filter="AS" data-att-1="SECTOR" data-val-1="AS-GRH">INTEGRAL MANAGEMENT OF WATER RESOURCES</option>
+				<option value="13" data-sector-filter="AS" data-att-1="SECTOR" data-val-1="AS-SAR">SANITATION RURAL AND PERI-URBAN</option>
+				<option value="14" data-sector-filter="AS" data-att-1="SECTOR" data-val-1="AS-SOL">SOLID WASTE</option>
+				<option value="15" data-sector-filter="DU" data-att-1="SECTOR" data-val-1="DU-HER">URBAN REHABILITATION AND HERITAGE</option>
+				<option value="16" data-sector-filter="DU" data-att-1="SECTOR" data-val-1="DU-NEI">NEIGHBORHOOD UPGRADING</option>
+				<option value="17" data-sector-filter="DU" data-att-1="SECTOR" data-val-1="DU-SUS">SUSTAINABLE CITIES</option>
+				<option value="18" data-sector-filter="DU" data-att-1="SECTOR" data-val-1="DU-VIV">HOUSING</option>
+				<option value="19" data-sector-filter="ED" data-att-1="SECTOR" data-val-1="ED-ADU">ADULT EDUCATION & LIFELONG LEARNING</option>
+				<option value="20" data-sector-filter="ED" data-att-1="SECTOR" data-val-1="ED-ICT">e-EDUCATION</option>
+				<option value="21" data-sector-filter="ED" data-att-1="SECTOR" data-val-1="ED-SEC">SECONDARY EDUCATION</option>
+				<option value="22" data-sector-filter="ED" data-att-1="SECTOR" data-val-1="ED-STW">SCHOOL-TO-WORK TRANSITION</option>
+				<option value="23" data-sector-filter="ED" data-att-1="SECTOR" data-val-1="ED-VOC">VOCATIONAL & TECHNICAL EDUCATION</option>
+				<option value="24" data-sector-filter="EN" data-att-1="SECTOR" data-val-1="EN">ENERGY</option>
+				<option value="25" data-sector-filter="EN" data-att-1="SECTOR" data-val-1="EN-EEC">ENERGY</option>
+				<option value="26" data-sector-filter="EN" data-att-1="SECTOR" data-val-1="EN-EEC">ENERGY EFFICIENCY AND RENEWABLE ENERGY IN END USE</option>
+				<option value="27" data-sector-filter="EN" data-att-1="SECTOR" data-val-1="EN-ERT">RURAL ELECTRIFICATION</option>
+				<option value="28" data-sector-filter="EN" data-att-1="SECTOR" data-val-1="EN-TBC">LOW-CARBON ENERGY TECHNOLOGIES</option>
+				<option value="29" data-sector-filter="FM" data-att-1="SECTOR" data-val-1="FM-BNK">BANKING MARKET DEVELOPMENT</option>
+				<option value="30" data-sector-filter="FM" data-att-1="SECTOR" data-val-1="FM-BNK">FINANCIAL MARKETS</option>
+				<option value="31" data-sector-filter="FM" data-att-1="SECTOR" data-val-1="FM-CAP">CAPITAL MARKET DEVELOPMENT</option>
+				<option value="32" data-sector-filter="FM" data-att-1="SECTOR" data-val-1="FM-FES">FINANCING FOR ENVIRONMENTAL SUSTAINABILITY</option>
+				<option value="33" data-sector-filter="FM" data-att-1="SECTOR" data-val-1="FM-INC">FINANCIAL INCLUSION</option>
+				<option value="34" data-sector-filter="FM" data-att-1="SECTOR" data-val-1="FM-INC">FINANCIAL MARKETS</option>
+				<option value="35" data-sector-filter="FM" data-att-1="SECTOR" data-val-1="FM-REG">FINANCIAL MARKETS</option>
+				<option value="36" data-sector-filter="IN" data-att-1="SECTOR" data-val-1="IN-MAN">MANUFACTURING INDUSTRIES</option>
+				<option value="37" data-sector-filter="IS" data-att-1="SECTOR" data-val-1="IS">SOCIAL INVESTMENT</option>
+				<option value="38" data-sector-filter="IS" data-att-1="SECTOR" data-val-1="IS-EMP">HUMAN RESOURCES & WORKFORCE DEVELOPMENT</option>
+				<option value="39" data-sector-filter="IS" data-att-1="SECTOR" data-val-1="IS-GDI">GENDER EQUALITY & WOMEN?S EMPOWERMENT</option>
+				<option value="40" data-sector-filter="IS" data-att-1="SECTOR" data-val-1="IS-LIS">LABOR INTERMEDIATION SYSTEMS</option>
+				<option value="41" data-sector-filter="IS" data-att-1="SECTOR" data-val-1="IS-LPO">LABOR POLICY</option>
+				<option value="42" data-sector-filter="IS" data-att-1="SECTOR" data-val-1="IS-POV">POVERTY ALLEVIATION</option>
+				<option value="43" data-sector-filter="IS" data-att-1="SECTOR" data-val-1="IS-VOC">VOCATIONAL AND WORKFORCE TRAINING</option>
+				<option value="44" data-sector-filter="OT" data-att-1="SECTOR" data-val-1="OT">MARKET DEVELOPMNET AND FUNCTIONING</option>
+				<option value="45" data-sector-filter="OT" data-att-1="SECTOR" data-val-1="OT">OTHER</option>
+				<option value="46" data-sector-filter="OT" data-att-1="SECTOR" data-val-1="OT">PRIVATE FIRMS AND SME DEVELOPMENT</option>
+				<option value="47" data-sector-filter="PA" data-att-1="SECTOR" data-val-1="PA">ENVIRONMENT AND NATURAL DISASTERS</option>
+				<option value="48" data-sector-filter="PA" data-att-1="SECTOR" data-val-1="PA-ADA">CLIMATE CHANGE ADAPTATION POLICY</option>
+				<option value="49" data-sector-filter="PA" data-att-1="SECTOR" data-val-1="PA-AMB">ENVIRONMENTAL MANAGEMENT AND GOVERNANCE</option>
+				<option value="50" data-sector-filter="PA" data-att-1="SECTOR" data-val-1="PA-BIO">BIODIVERSITY AND PROTECTED AREAS CONSERVATION</option>
+				<option value="51" data-sector-filter="PA" data-att-1="SECTOR" data-val-1="PA-COS">COASTAL ZONE MANAGEMENT</option>
+				<option value="52" data-sector-filter="PA" data-att-1="SECTOR" data-val-1="PA-DRM">CLIMATE CHANGE ADAPTATION POLICY</option>
+				<option value="53" data-sector-filter="PA" data-att-1="SECTOR" data-val-1="PA-DRM">INTEGRATED DISASTER RISK MANAGEMENT</option>
+				<option value="54" data-sector-filter="PA" data-att-1="SECTOR" data-val-1="PA-FOR">FOREST RESOURCES MANAGEMENT</option>
+				<option value="55" data-sector-filter="PA" data-att-1="SECTOR" data-val-1="PA-MIT">CLIMATE CHANGE MITIGATION POLICY</option>
+				<option value="56" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS">MICROENTERPRISE DEVELOPMENT</option>
+				<option value="57" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS">PRIVATE FIRMS AND SME DEVELOPMENT</option>
+				<option value="58" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-CSC">CORPORATE SOCIAL RESPONSIBILITY</option>
+				<option value="59" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-EMP">BUSINESS CLIMATE AND COMPETITIVENESS</option>
+				<option value="60" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-EMP">ENTERPRISE DEVELOPMENT, CLUSTERS AND INNOVATION</option>
+				<option value="61" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-EMP">INDUSTRY</option>
+				<option value="62" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-EMP">OTHER</option>
+				<option value="63" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-EMP">PRIVATE FIRMS AND SME DEVELOPMENT</option>
+				<option value="64" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-MAJ">MAJORITY MARKETS DEVELOPMENT</option>
+				<option value="65" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-MDF">MARKET DEVELOPMNET AND FUNCTIONING</option>
+				<option value="66" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-MDF">PRIVATE FIRMS AND SME DEVELOPMENT</option>
+				<option value="67" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-MDF">SMALL AND MEDIUM ENTERPRISE</option>
+				<option value="68" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-MIC">MICROENTERPRISE DEVELOPMENT</option>
+				<option value="69" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-MIC">PRIVATE FIRMS AND SME DEVELOPMENT</option>
+				<option value="70" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-NEG">BUSINESS CLIMATE AND COMPETITIVENESS</option>
+				<option value="71" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-PYM">BUSINESS CLIMATE AND COMPETITIVENESS</option>
+				<option value="72" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-PYM">ENTERPRISE DEVELOPMENT, CLUSTERS AND INNOVATION</option>
+				<option value="73" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-PYM">FINANCIAL MARKETS</option>
+				<option value="74" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-PYM">MICROENTERPRISE DEVELOPMENT</option>
+				<option value="75" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-PYM">SCIENCE AND TECHNOLOGY</option>
+				<option value="76" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-PYM">SMALL AND MEDIUM ENTERPRISE</option>
+				<option value="77" data-sector-filter="PS" data-att-1="SECTOR" data-val-1="PS-REG">INTEGRATED REGIONAL/LOCAL ECONOMIC DEVELOPMENT</option>
+				<option value="78" data-sector-filter="RI" data-att-1="SECTOR" data-val-1="RI">REGIONAL INTEGRATION</option>
+				<option value="79" data-sector-filter="RI" data-att-1="SECTOR" data-val-1="RI-RCC">REGIONAL AND CROSS-BORDER COOPERATION</option>
+				<option value="80" data-sector-filter="RM" data-att-1="SECTOR" data-val-1="RM-DES">DECENTRALIZATION & INTERGOVERNMENTAL RELATIONS</option>
+				<option value="81" data-sector-filter="RM" data-att-1="SECTOR" data-val-1="RM-JUS">MODERNIZATION & ADMINIST OFJUSTICE</option>
+				<option value="82" data-sector-filter="SA" data-att-1="SECTOR" data-val-1="SA-DPC">DISEASE PREVENTION & CONTROL</option>
+				<option value="83" data-sector-filter="SA" data-att-1="SECTOR" data-val-1="SA-HSS">HEALTH SYSTEM STRENGTHENING</option>
+				<option value="84" data-sector-filter="SA" data-att-1="SECTOR" data-val-1="SA-ICT">e-HEALTH</option>
+				<option value="85" data-sector-filter="SA" data-att-1="SECTOR" data-val-1="SA-PHC">PRIMARY HEALTH CARE</option>
+				<option value="86" data-sector-filter="SA" data-att-1="SECTOR" data-val-1="SA-SER">HEALTH SERVICES</option>
+				<option value="87" data-sector-filter="ST" data-att-1="SECTOR" data-val-1="ST">SCIENCE AND TECHNOLOGY</option>
+				<option value="88" data-sector-filter="ST" data-att-1="SECTOR" data-val-1="ST-DIF">TECHNOLOGY DIFFUSION</option>
+				<option value="89" data-sector-filter="ST" data-att-1="SECTOR" data-val-1="ST-HRD">ADVANCED HUMAN CAPITAL</option>
+				<option value="90" data-sector-filter="ST" data-att-1="SECTOR" data-val-1="ST-ICT">ICT (INFORMATION AND COMMUNICATIONS TECHNOLOGY)</option>
+				<option value="91" data-sector-filter="ST" data-att-1="SECTOR" data-val-1="ST-INF">TELECOMMUNICATIONS INFRASTRUCTURE</option>
+				<option value="92" data-sector-filter="ST" data-att-1="SECTOR" data-val-1="ST-RDI">SCIENCE AND TECHNOLOGY</option>
+				<option value="93" data-sector-filter="TD" data-att-1="SECTOR" data-val-1="TD-EIP">EXPORT AND INVESTMENT PROMOTION</option>
+				<option value="94" data-sector-filter="TR" data-att-1="SECTOR" data-val-1="TR-LUR">URBAN LOGISTICS</option>
+				<option value="95" data-sector-filter="TR" data-att-1="SECTOR" data-val-1="TR-UGC">DEMAND MANAGEMENT AND CONTROL OF URBAN TRANSPORT SYSTEMS</option>
+				<option value="96" data-sector-filter="TR" data-att-1="SECTOR" data-val-1="TR-UMA">PUBLIC TRANSPORT (BUS/TRAIN/CABLE). INFRASTRUCTURE AND EQUIPMENT</option>
+			  </select>
+			</div>
+  
+  		  <div class="input-group mb-3">
+			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_PRODUCT_CD">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Product help" data-content="From Convergence Operation Type."><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; Product &nbsp; <a href="#" title="Product Chart" id="product_chart" data-toggle="chartWindow" data-target="#chartModalWindow" ><span class="fas fa-chart-pie fa-xs"></span></a>
+				</label>
+			  </div>
+			  <select class="custom-select" id="GSELECT_PRODUCT_CD">
+				<option selected value="0" data-att-1="PRODUCT_CD" data-val-1="">Todos</option>
+				<option value="TCP" data-att-1="PRODUCT_CD" data-val-1="TCP">TCP</option>
+				<option value="IGR" data-att-1="PRODUCT_CD" data-val-1="IGR">IGR</option>
+				<option value="EQU" data-att-1="PRODUCT_CD" data-val-1="EQU">EQU</option>
+				<option value="LON" data-att-1="PRODUCT_CD" data-val-1="LON">LON</option>
+			  </select>
+			</div>
+			
+  		  <div class="input-group mb-3">
+			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_LENDING_INSTRMNT_CD">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Instrument help" data-content="From NSG Categorization in Convergence."><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; Instrument &nbsp; <a href="#" title="Instrument x Product Chart" id="instrument_chart" data-toggle="chartWindow" data-target="#chartModalWindow" ><span class="fas fa-chart-pie fa-xs"></span></a>
+				</label>
+			  </div>
+			  <select class="custom-select" id="GSELECT_LENDING_INSTRMNT_CD">
+				<option selected value="0" data-att-1="LENDING_INSTRMNT_CD" data-val-1="">Todos</option>
+				<option value="MIF" data-att-1="LENDING_INSTRMNT_CD" data-val-1="MIF">MIF</option>
+				<option value="SMP" data-att-1="LENDING_INSTRMNT_CD" data-val-1="SMP">SMP</option>
+			  </select>
+			</div>
+
+  		  <div class="input-group mb-3">
+			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_STATUS_CD_DIC">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Last status of December help" data-content="Status of the operation during the last 'End of Month' balance."><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; Last status (Dic)</label>
+			  </div>
+			  <select class="custom-select" id="GSELECT_STATUS_CD_DIC">
+				<option selected value="0" data-att-1="STATUS_CD_DIC" data-val-1="">Todos</option>
+				<option value="2" data-att-1="STATUS_CD_DIC" data-val-1="CA">SI Signed</option>
+				<option value="3" data-att-1="STATUS_CD_DIC" data-val-1="EL">EL Eligible</option>
+				<option value="4" data-att-1="STATUS_CD_DIC" data-val-1="AF">AF Approved and Funded</option>
+				<option value="5" data-att-1="STATUS_CD_DIC" data-val-1="EF">EF Effective</option>
+				<option value="6" data-att-1="STATUS_CD_DIC" data-val-1="DI">DI Disbursing</option>
+				<option value="7" data-att-1="STATUS_CD_DIC" data-val-1="FD">FD Fully Disbursed</option>
+				<option value="8" data-att-1="STATUS_CD_DIC" data-val-1="CF">CF Closed for Financing</option>
+				<option value="9" data-att-1="STATUS_CD_DIC" data-val-1="CO">CO Closed for Operations</option>
+				<option value="10" data-att-1="STATUS_CD_DIC" data-val-1="CA">CA Cancelled</option>
+				<option value="11" data-att-1="STATUS_CD_DIC" data-val-1="DE">DE Deleted</option>
+				<option value="12" data-att-1="STATUS_CD_DIC" data-val-1="ZZ">ZZ Not Defined</option>
+			  </select>
+			</div>
+  
+		  </div>
+		
+		<!-- Small table of totals -->
+		<table class="table table-sm" id="totalsTable">
+		  <thead>
+			<tr>
+			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Number of operations concerned by the filters either at first balance or last of the 2019 year.">
+				<a href="#" title="LifeCycle Chart" id="lifecycle_chart" data-toggle="chartWindow" data-target="#chartModalWindow" ><span class="fas fa-chart-pie fa-xs"></span>
+				<span id='nbTransactions'>x</span> op.</a>
+			  </th>
+			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Filtering values concerning the financial balance of end of month (EOM) of Dicember 2018. In case of new created project, it will be the first official end of month balance of creation during 2019.">12/31/2018*</th>
+			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Filtering values concerning the financial balance of end of month (EOM) of Dicember 2019 o del ultimo possible segun la fecha de hoy.">12/31/2019*</th>
+			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Delta o difference between the two previous columns: representing the evolution during 2019. Hover the mouse over value to get more details about positives and negatives deltas.">&#x394; 2019</th>
+			</tr>
+		  </thead>
+		  <tbody>
+			<tr>
+			  <th scope="row" data-toggle="tooltip" data-placement="right" title="Sum of current approved amounts for the operations concerned by the filters either at first balance or last of the 2019 year.">APPRV</th>
+			  <td id='appvr-1' >0</td>
+			  <td id='appvr-2'>0</td>
+			  <td id='appvr-3'>0</td>
+			</tr>
+			<tr>
+			  <th scope="row" data-toggle="tooltip" data-placement="right" title="Sum of undisbursed amounts for the operations concerned by the filters either at first balance or last of the 2019 year.">UNDISB</th>
+			  <td id='undisb-1'>0</td>
+			  <td id='undisb-2'>0</td>
+			  <td id='undisb-3'>0</td>
+			</tr>
+			<tr>
+			  <th scope="row" data-toggle="tooltip" data-placement="right" title="Sum of disbursed amounts for the operations concerned by the filters either at first balance or last of the 2019 year.">DISB</th>
+			  <td id='disb-1'>0</td>
+			  <td id='disb-2'>0</td>
+			  <td id='disb-3'>0</td>
+			</tr>
+			<tr>
+			  <th scope="row" data-toggle="tooltip" data-placement="right" title="Sum of cancelled amounts for the operations concerned by the filters either at first balance or last of the 2019 year.">CANCL</th>				
+			  <td id='cncl-1'>0</td>
+			  <td id='cncl-2'>0</td>
+			  <td id='cncl-3'>0</td>
+			</tr>
+		  </tbody>
+		</table>
+		
+		<div class="alert alert-info" id="filters_info" role="alert">
+			No filters set
+		</div>
+		
+    </nav>
+    <!-- Page Content -->
+    <div id="content" class="activeHeight">
+		
+		<!-- Modal Table data -->
+		<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLongTitle">Operations Raw data</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body" id="datatable-body">
+
+					<div id="toolbar-table" class="select">
+					  <select class="form-control">
+						<option value="">Export Basic</option>
+						<option value="all">Export All</option>
+						<option value="selected">Export Selected</option>
+					  </select>
+					</div>
+					
+					<table id="datatable" 
+						class="table table-sm"
+						data-toggle="table"
+						data-pagination="true"
+						data-search="true"
+						data-toolbar="#toolbar-table"
+						data-show-export="true"
+						data-show-toggle="true"
+						data-show-columns="true"
+						data-show-fullscreen="true" 
+					>
+						<thead>
+							<tr>
+								<th data-sortable="true" data-field="PROJECT_NUMBER"  data-formatter="linkProjectFormatter">Project</th>
+								<th data-sortable="true" data-field="OPERATION_NUMBER" data-formatter="linkProjectFormatter">Operation</th>
+								<th data-sortable="true" data-field="BALANCE_DATE">Date</th>
+								<th data-sortable="true" data-field="STATUS">Status</th>
+								<th data-sortable="true" data-field="PRODUCT_CD">Tipo</th>
+								<th data-sortable="true" data-field="CURRENT_APPROVED_AMNT_USEQ_DIC" data-formatter="moneyFormatter">Apprvd</th>
+								<th data-sortable="true" data-field="UNDISBURSED_AMNT_USEQ_DIC" data-formatter="moneyFormatter">Undisb.</th>
+								<th data-sortable="true" data-field="DISBURSED_AMNT_USEQ_DIC" data-formatter="moneyFormatter">Disbursed</th>
+								<th data-sortable="true" data-field="CANCELLED_AMNT_USEQ_DIC" data-formatter="moneyFormatter">Cancel</th>
+								<th data-sortable="true" data-field="BENEFICIARY_COUNTRY_ENGL_NM">Country</th>
+								<th data-sortable="true" data-field="REGION_CD">Region</th>
+								<th data-sortable="true" data-field="FOCUS_NM">MIF code</th>
+								<th data-sortable="true" data-field="SECTOR_ENGL_NM">Code sector</th>
+							</tr>
+						</thead>
+					</table>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+		
+		<!-- Buttons on top of the map -->
+		<div id="button-wrapper">
+			&nbsp;
+			<div class="btn-group">
+				<button type="button" id="sidebarCollapse" class="btn btn-info">
+					<i class="fas fa-align-left"></i>
+					<span>Filters</span>
+				</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" id="dataWindowOpen" class="btn btn-info" data-toggle="modal" data-target="#exampleModalCenter">
+					<i class="fas fa-clipboard-list"></i>
+					<span>Data</span>
+				</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" id="chartCollapse" class="btn btn-info">
+					<i class="fas fa-chart-pie"></i>
+					<span>Charts</span>
+				</button>
+			</div>
+
+			<div class="alert alert-success alert-dismissible fade show" id="loadedAlert" role="alert">
+				<span class="fas fa-info-circle"></span>
+				<strong>Data loaded with success</strong>
+				<br /><div id="loadedMsg"></div>
+				<button type="button" class="close" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		</div>
+		
+	<!-- The full screen map -->
+	<div class='custom-popup' id="map"></div>
+	
+	<!-- The graph bottom area -->
+	<div id="downbar" class="card activeHeight">
+		<div class="card-body card-graph-body">
+			<div class="card-graph-header">
+				
+				<button type="button" class="btn btn-info btn-sm btn-remove-filters" id="removeAllFilter"
+				data-toggle="tooltip" data-placement="top" title="Remove currents filters applied on operations.">
+					<span class="fa-stack fa-xs">
+						<i class="fas fa-filter fa-stack-1x" style="color:White"></i>
+						<i class="fas fa-ban fa-stack-2x" style="color:White"></i>
+					</span>
+				</button>
+
+				<div class="input-group input-group-sm mb-3">
+				  <div class="input-group-prepend">
+					<label class="input-group-text">
+					Variable 1
+					</label>
+				  </div>
+				  <select class="custom-select-chart form-control form-control-sm">
+					<option selected value="0" data-att-1="var1" data-val-1="">Not set</option>
+					<option value="FOCUS_CD" data-att-1="var1" data-val-1="FOCUS_CD">MIF Category</option>
+					<option value="SECTOR_CD" data-att-1="var1" data-val-1="SECTOR_CD">LFM sector</option>
+					<option value="ISO_A3" data-att-1="var1" data-val-1="ISO_A3">Country</option>
+					<option value="REGION_CD" data-att-1="var1" data-val-1="REGION_CD">Region</option>
+					<option value="PRODUCT_CD" data-att-1="var1" data-val-1="PRODUCT_CD">Product</option>
+					<option value="LENDING_INSTRMNT_CD" data-att-1="var1" data-val-1="LENDING_INSTRMNT_CD">Instrument</option>
+				  </select>
+				</div>
+				
+				<div class="input-group input-group-sm mb-3">
+				  <div class="input-group-prepend">
+					<label class="input-group-text">
+					Variable 2
+					</label>
+				  </div>
+				  <select class="custom-select-chart form-control form-control-sm">
+					<option selected value="0" data-att-1="var2" data-val-1="">Not set</option>
+					<option value="FOCUS_CD" data-att-1="var2" data-val-1="FOCUS_CD">MIF Category</option>
+					<option value="SECTOR_CD" data-att-1="var2" data-val-1="SECTOR_CD">LFM sector</option>
+					<option value="ISO_A3" data-att-1="var2" data-val-1="ISO_A3">Country</option>
+					<option value="REGION_CD" data-att-1="var2" data-val-1="REGION_CD">Region</option>
+					<option value="PRODUCT_CD" data-att-1="var2" data-val-1="PRODUCT_CD">Product</option>
+					<option value="LENDING_INSTRMNT_CD" data-att-1="var2" data-val-1="LENDING_INSTRMNT_CD">Instrument</option>
+				  </select>
+				</div>
+			
+				<div class="input-group input-group-sm mb-3">
+				  <div class="input-group-prepend">
+					<label class="input-group-text">
+					Value
+					</label>
+				  </div>
+				  <select class="custom-select-chart form-control form-control-sm">
+					<option selected value="0" data-att-1="value" data-val-1="">Number of operations</option>
+					<option value="A" data-att-1="value" data-val-1="A">Sum of approval USD</option>
+					<option value="U" data-att-1="value" data-val-1="U">Sum of undisbursed USD</option>
+					<option value="C" data-att-1="value" data-val-1="C">Sum of cancelled USD</option>
+					<option value="DELTA_DISBURSED_AMNT_USEQ" data-att-1="value" data-val-1="DELTA_DISBURSED_AMNT_USEQ">Total of disbursed during 19 USD</option>
+					<option value="DELTA_CANCELLED_AMNT_USEQ" data-att-1="value" data-val-1="DELTA_CANCELLED_AMNT_USEQ">Total of cancelled during 19 USD</option>
+				  </select>
+				</div>
+				
+				<div class="input-group input-group-sm mb-3">
+				  <div class="input-group-prepend">
+					<label class="input-group-text">
+						Type
+					</label>
+				  </div>
+				  <select class="custom-select-chart form-control form-control-sm">
+					<option selected value="bar" data-att-1="type" data-val-1="bar">Bar</option>
+					<option value="radar" data-att-1="type" data-val-1="radar">Spider</option>
+					<option value="pie" data-att-1="type" data-val-1="pie">Pie</option>
+					<option value="drawOperationsYear" data-att-1="type" data-val-1="drawOperationsYear">Yearly</option>
+				  </select>
+				</div>
+
+			</div>
+			  
+			<div id="chartContainer" class="chart-container">
+				<canvas id="chartCanvas"></canvas>
+			</div>
+			  
+		</div>
+	</div>
+</div>
+
+
+
+<script src="./idblabmap-filter.js"></script>
+<script src="./idblabmap-charts.js"></script>
+<script src="./idblabmap.js"></script>
+<script src="./idblabmap-data.js"></script>
+<script src="./intro.js"></script>
+
+</body>
+</html>
