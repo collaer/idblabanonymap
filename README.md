@@ -1,4 +1,4 @@
-# IUDB Lab 2019 Geodashboard
+# IDB Lab 2019 Geodashboard
 
 Testing tools and solutions for building vizualization tools for the lab.
 
