@@ -1,6 +1,6 @@
 var operations;
 var OPERATIONS_GEOJSON = (window.location.href.indexOf("file:")==-1 || true ?
-"https://raw.githubusercontent.com/collaer/idblabmap/master/DATA/operations-snapshot-2019.geojson"
+"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/operations-anonymized-2019.geojson"
 :
 "./DATA/bidlab2019October.geojson");
 
