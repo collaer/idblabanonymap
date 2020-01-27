@@ -73,6 +73,16 @@ $.getJSON(OPERATIONS_GEOJSON)
 				if (f.properties.C12)
 					f.properties.C12 *= -1;
 			}
+			//store ol WAS_OPEN into NEW RECORD FRON 2019 year, because a project is not new because his reford is new but
+			//it is new only if the APPROVAL YEAR is in 2019 !!
+			f.properties.NEWRECORD19 = f.properties.WAS_OPEN;
+			
+			if (f.properties.APPRVL_DT.startsWith("2019-")){
+				f.properties.WAS_OPEN = 1;
+			} else {
+				f.properties.WAS_OPEN = 0;
+			};
+
 		});
 		
 		operations = data;
