@@ -133,7 +133,7 @@
 
 
         var mapLink =
-            '<a href="http://openstreetmap.org">OSM</a> | <a href="https://bidlab.org/en">IDB Lab</a> | <a href="https://github.com/collaer/idblabmap">code</a>';
+            '<a href="http://openstreetmap.org">OSM</a> | <a href="https://bidlab.org/en">IDB Lab</a> | <a href="https://github.com/collaer/idblabanonymap">code</a>';
         var baseMap = L.tileLayer(
             'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; ' + mapLink + ' ',
