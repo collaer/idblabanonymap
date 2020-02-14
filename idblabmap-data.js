@@ -257,7 +257,7 @@ function joinData() {
 	//**CLOSING STUFFF***
 	totals.updateHTML();
 	$('#loadedAlert').show();
-	$('#loadedMsg')[0].innerHTML = "A total of " + totals.approved.counter + " IDB Lab operations were loaded.";
+	$('#loadedMsg')[0].innerHTML = "A total of " + totals.approved.counter + " IDB Lab project / approvals / sub-operations were loaded.";
 	
 	//SCALE CHOROPLETH
 	choroplethScaler.base = Math.max(0,minCountry -2);
