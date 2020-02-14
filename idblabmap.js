@@ -96,6 +96,8 @@
 				,new FilterAttribute({attribute:'LENDING_INSTRMNT_CD',type:'='})
 				,new FilterAttribute({attribute:'STATUS_SELECT',type:'IN'})
 				,new FilterAttribute({attribute:'ISO_A3',type:'='})
+				,new FilterAttribute({attribute:'FINANCIAL_INSTRUMENT_CD',type:'='})
+				,new FilterAttribute({attribute:'FUND_CD',type:'='})
 			],
 			infoSelector : '#filters_info'
 		});
@@ -239,6 +241,8 @@ $(document).ready(function () {
 	$("#GSELECT_PRODUCT_CD").val(0);
 	$("#GSELECT_LENDING_INSTRMNT_CD").val(0);
 	$("#GSELECT_STATUS_CD_DIC").val(0);
+	$("#GSELECT_FUND_CD_SELECT").val(0);
+	$("#GSELECT_FINANCIAL_INSTRUMENT_CD_SELECT").val(0);
 	
 	$('#removeAllFilter').on('click', function () {
 		$("#GSELECT_STATUS_SELECT").val(0);
@@ -251,6 +255,8 @@ $(document).ready(function () {
 		$("#GSELECT_PRODUCT_CD").val(0);
 		$("#GSELECT_LENDING_INSTRMNT_CD").val(0);
 		$("#GSELECT_STATUS_CD_DIC").val(0);
+		$("#GSELECT_FUND_CD_SELECT").val(0);
+		$("#GSELECT_FINANCIAL_INSTRUMENT_CD_SELECT").val(0);		
 		$('.custom-select').trigger('change');
 		if (idblabchart.charts['chartCanvas']) 
 			$('.custom-select-chart').trigger('change');

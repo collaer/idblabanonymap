@@ -68,7 +68,8 @@
 			
 		  <!-- Filters options form -->
 		  <div class="form-group">
-
+		  
+		  <!--
 		  <div class="input-group mb-3">
 			  <div class="input-group-prepend">
 				<label class="input-group-text" for="GSELECT_STATUS_SELECT">
@@ -88,6 +89,7 @@
 				<option value="3" data-att-1="STATUS_SELECT" data-val-1="IN('DI', 'EL')" >Unicamente DI y EL</option>
 			  </select>
 			</div>
+			-->
 			
 		  <div class="input-group mb-3 introjs-fixparent" id="GSELECT_WAS_CLOSED_INPUTGROUP">
 			  <div class="input-group-prepend introjs-showElement">
@@ -99,7 +101,7 @@
 				</label>
 			  </div>
 			  <select class="custom-select introjs-showElement" id="GSELECT_WAS_CLOSED">
-				<option selected value="0" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="" data-att-3="NO_TRANSACTIONS" data-val-3="">Todos</option>
+				<option selected value="0" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="" data-att-3="NO_TRANSACTIONS" data-val-3="">All</option>
 				<option value="1" data-att-1="WAS_OPEN" data-val-1="1" data-att-2="WAS_CLOSED" data-val-2="" data-att-3="NO_TRANSACTIONS" data-val-3="">Approved in 2019</option>
 				<option value="-1" data-att-1="WAS_OPEN" data-val-1="0" data-att-2="WAS_CLOSED" data-val-2="" data-att-3="NO_TRANSACTIONS" data-val-3="">Approved before 2019</option>
 				<option value="20" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="CF,CO,1" data-att-3="NO_TRANSACTIONS" data-val-3="">Closed in 2019</option>
@@ -339,8 +341,8 @@
   		  <div class="input-group mb-3">
 			  <div class="input-group-prepend">
 				<label class="input-group-text" for="GSELECT_LENDING_INSTRMNT_CD">
-				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Instrument help" data-content="From NSG Categorization in Convergence."><span class="fas fa-info-circle fa-xs"></span></a>
-				&nbsp; Instrument &nbsp; <a href="#" title="Instrument x Product Chart" id="instrument_chart" data-toggle="chartWindow" data-target="#chartModalWindow" ><span class="fas fa-chart-pie fa-xs"></span></a>
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Instrument help" data-content="Lending type or intrument from NSG Categorization in Convergence."><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; Lending type &nbsp; <a href="#" title="Instrument x Product Chart" id="instrument_chart" data-toggle="chartWindow" data-target="#chartModalWindow" ><span class="fas fa-chart-pie fa-xs"></span></a>
 				</label>
 			  </div>
 			  <select class="custom-select" id="GSELECT_LENDING_INSTRMNT_CD">
@@ -349,6 +351,61 @@
 				<option value="SMP" data-att-1="LENDING_INSTRMNT_CD" data-val-1="SMP">SMP</option>
 			  </select>
 			</div>
+
+		  <div class="input-group mb-3">
+			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_FUND_CD_SELECT">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Fund" data-content="FUND CD from fin bal
+				"><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; Fund
+				</label>
+			  </div>
+			  <select class="custom-select" id="GSELECT_FUND_CD_SELECT">
+				<option selected value="0" data-att-1="FUND_CD" data-val-1="" >All funds</option>
+				<option value="1" data-att-1="FUND_CD" data-val-1="AUS">AUS</option>
+				<option value="2" data-att-1="FUND_CD" data-val-1="CCF">CCF</option>
+				<option value="3" data-att-1="FUND_CD" data-val-1="COF">COF</option>
+				<option value="4" data-att-1="FUND_CD" data-val-1="CTF">CTF</option>
+				<option value="5" data-att-1="FUND_CD" data-val-1="FEP">FEP</option>
+				<option value="6" data-att-1="FUND_CD" data-val-1="FMM">FMM</option>
+				<option value="7" data-att-1="FUND_CD" data-val-1="ICR">ICR</option>
+				<option value="8" data-att-1="FUND_CD" data-val-1="ITC">ITC</option>
+				<option value="9" data-att-1="FUND_CD" data-val-1="JPO">JPO</option>
+				<option value="10" data-att-1="FUND_CD" data-val-1="KPS">KPS</option>
+				<option value="11" data-att-1="FUND_CD" data-val-1="MAG">MAG</option>
+				<option value="12" data-att-1="FUND_CD" data-val-1="MCB">MCB</option>
+				<option value="13" data-att-1="FUND_CD" data-val-1="MHR">MHR</option>
+				<option value="14" data-att-1="FUND_CD" data-val-1="MPF">MPF</option>
+				<option value="15" data-att-1="FUND_CD" data-val-1="MSE">MSE</option>
+				<option value="16" data-att-1="FUND_CD" data-val-1="MSF">MSF</option>
+				<option value="17" data-att-1="FUND_CD" data-val-1="NDV">NDV</option>
+				<option value="18" data-att-1="FUND_CD" data-val-1="ORC">ORC</option>
+				<option value="19" data-att-1="FUND_CD" data-val-1="SCX">SCX</option>
+				<option value="20" data-att-1="FUND_CD" data-val-1="TDF">TDF</option>
+			  </select>
+			</div>
+			
+		  <div class="input-group mb-3">
+			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_FINANCIAL_INSTRUMENT_CD_SELECT">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Fund" data-content="FINANCIAL_INSTRUMENT_CD from 'fin bal' 
+				"><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; Instrument
+				</label>
+			  </div>
+			  <select class="custom-select" id="GSELECT_FINANCIAL_INSTRUMENT_CD_SELECT">
+				<option selected value="0" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="" >All instruments</option>
+				<option value="1" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="AUS">AUS</option>
+				<option value="1" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="ADM">ADM</option>
+				<option value="2" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="EQU">EQU</option>
+				<option value="3" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="GRT">GRT</option>
+				<option value="4" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="MIF">MIF</option>
+				<option value="5" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="PSL">PSL</option>
+				<option value="6" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="SEP">SEP</option>
+				<option value="7" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="TCC">TCC</option>
+				<option value="8" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="TCN">TCN</option>
+			  </select>
+			</div>			
 
   		  <div class="input-group mb-3">
 			  <div class="input-group-prepend">
@@ -541,7 +598,9 @@
 					<option value="ISO_A3" data-att-1="var1" data-val-1="ISO_A3">Country</option>
 					<option value="REGION_CD" data-att-1="var1" data-val-1="REGION_CD">Region</option>
 					<option value="PRODUCT_CD" data-att-1="var1" data-val-1="PRODUCT_CD">Product</option>
-					<option value="LENDING_INSTRMNT_CD" data-att-1="var1" data-val-1="LENDING_INSTRMNT_CD">Instrument</option>
+					<option value="LENDING_INSTRMNT_CD" data-att-1="var1" data-val-1="LENDING_INSTRMNT_CD">Lending Inst</option>
+					<option value="FINANCIAL_INSTRUMENT_CD" data-att-1="var1" data-val-1="FINANCIAL_INSTRUMENT_CD">Fin Inst</option>
+					<option value="FUND_CD" data-att-1="var1" data-val-1="FUND_CD">Fund</option>
 				  </select>
 				</div>
 				
@@ -558,7 +617,9 @@
 					<option value="ISO_A3" data-att-1="var2" data-val-1="ISO_A3">Country</option>
 					<option value="REGION_CD" data-att-1="var2" data-val-1="REGION_CD">Region</option>
 					<option value="PRODUCT_CD" data-att-1="var2" data-val-1="PRODUCT_CD">Product</option>
-					<option value="LENDING_INSTRMNT_CD" data-att-1="var2" data-val-1="LENDING_INSTRMNT_CD">Instrument</option>
+					<option value="LENDING_INSTRMNT_CD" data-att-1="var2" data-val-1="LENDING_INSTRMNT_CD">Lending Inst</option>
+					<option value="FINANCIAL_INSTRUMENT_CD" data-att-1="var2" data-val-1="FINANCIAL_INSTRUMENT_CD">Fin Inst</option>
+					<option value="FUND_CD" data-att-1="var2" data-val-1="FUND_CD">Fund</option>
 				  </select>
 				</div>
 			

@@ -268,6 +268,8 @@ function getTableJSONFromFeature(features) {
 			,WAS_CLOSED:operation.properties.WAS_CLOSED
 			,NO_TRANSACTIONS:operation.properties.NO_TRANSACTIONS
 			,LENDING_INSTRMNT_CD:operation.properties.LENDING_INSTRMNT_CD
+			,FUND_CD:operation.properties.FUND_CD
+			,FINANCIAL_INSTRUMENT_CD:operation.properties.FINANCIAL_INSTRUMENT_CD
 			,ISO_A3:operation.properties.ISO_A3
 			,SECTOR_CD:operation.properties.SECTOR_CD
 			,IDGEOJSON:operation.properties.key

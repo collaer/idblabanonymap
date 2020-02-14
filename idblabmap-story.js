@@ -350,6 +350,8 @@ $(document).ready(function () {
 			,new FilterAttribute({attribute:'LENDING_INSTRMNT_CD',type:'='})
 			,new FilterAttribute({attribute:'STATUS_SELECT',type:'IN'})
 			,new FilterAttribute({attribute:'ISO_A3',type:'='})
+			,new FilterAttribute({attribute:'FINANCIAL_INSTRUMENT_CD',type:'='})
+			,new FilterAttribute({attribute:'FUND_CD',type:'='})
 		],
 		infoSelector : '#filters_info'
 	});

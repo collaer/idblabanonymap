@@ -245,6 +245,42 @@ var graphFields = {
 			{ code: "TTO", label: "TRINIDAD AND TOBAGO" },
 			{ code: "URY", label: "URUGUAY" },
 			{ code: "VEN", label: "VENEZUELA" }]
+	},
+	'FUND_CD' : {
+		label: 'Fund',
+		values: [
+			{ code: "AUS", label: "AUS" },
+			{ code: "CCF", label: "CCF" },
+			{ code: "COF", label: "COF" },
+			{ code: "CTF", label: "CTF" },
+			{ code: "FEP", label: "FEP" },
+			{ code: "FMM", label: "FMM" },
+			{ code: "ICR", label: "ICR" },
+			{ code: "ITC", label: "ITC" },
+			{ code: "JPO", label: "JPO" },
+			{ code: "KPS", label: "KPS" },
+			{ code: "MAG", label: "MAG" },
+			{ code: "MCB", label: "MCB" },
+			{ code: "MHR", label: "MHR" },
+			{ code: "MPF", label: "MPF" },
+			{ code: "MSE", label: "MSE" },
+			{ code: "MSF", label: "MSF" },
+			{ code: "NDV", label: "NDV" },
+			{ code: "ORC", label: "ORC" },
+			{ code: "SCX", label: "SCX" },
+			{ code: "TDF", label: "TDF" }]
+	},
+	'FINANCIAL_INSTRUMENT_CD' : {
+		label: 'Finan. Instr.',
+		values: [	
+			{ code: "ADM", label: "ADM" },
+			{ code: "EQU", label: "EQU" },
+			{ code: "GRT", label: "GRT" },
+			{ code: "MIF", label: "MIF" },
+			{ code: "PSL", label: "PSL" },
+			{ code: "SEP", label: "SEP" },
+			{ code: "TCC", label: "TCC" },
+			{ code: "TCN", label: "TCN" }]
 	}
 };
 
