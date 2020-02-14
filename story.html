@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>IDB Lab 2019 Operations Footprint Story</title>
+    <title>IDB Lab 2019 Sub-operations Footprint Story</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -109,7 +109,7 @@
 	   		  <div class="col-sm-18 col-sm-offset-12">
 			  <ul class="nav nav-pills">
 				<li class="nav-item">
-				  <a class="nav-link" href="#LEGACY_TEXT">Legacy operations</a>
+				  <a class="nav-link" href="#LEGACY_TEXT">Legacy sub-operations</a>
 				</li>
 				<li class="nav-item">
 				  <a class="nav-link" href="#NEW_TEXT">Newly approved</a>
@@ -134,7 +134,7 @@
 		<div style="padding-top:70px;padding-bottom:70px">
 			<div id="LEGACY_TEXT">
 				<h4 id="country">IDB Lab 2019</h4>
-				<h4 id="legacy">Operations approved before 2019</h4>
+				<h4 id="legacy">Sub-operations approved before 2019</h4>
 				<p>
 				Retrieving data...
 				</p>
@@ -147,7 +147,7 @@
 
             <div class="line"></div>
 
-            <h4 id="legacy_MIF">IDB Lab Focus codes undisbursed amount evolution for legacies operations approved before 2019</h4>
+            <h4 id="legacy_MIF">IDB Lab Focus codes undisbursed amount evolution for legacies sub-operations approved before 2019</h4>
 			<p>
 				<div  class="chart-container" style="height:400px;">
 					<canvas id="chartCanvas_LEGACY_MIF"></canvas>
@@ -158,7 +158,7 @@
 
             <div id="NEW_TEXT">
 				<h4 id="country">IDB Lab 2019</h4>
-				<h4 id="legacy">Operations approved during 2019</h4>
+				<h4 id="legacy">Sub-operations approved during 2019</h4>
 				<p>
 				Retrieving data...
 				</p>
@@ -168,7 +168,7 @@
 					<canvas id="chartCanvas_NEW"></canvas>
 				</div>
 			</p>
-			<h4 id="legacy_MIF">IDB Lab Focus codes undisbursed amount evolution for newly approved operations in 2019</h4>
+			<h4 id="legacy_MIF">IDB Lab Focus codes undisbursed amount evolution for newly approved sub-operations in 2019</h4>
 			<p>
 				<div  class="chart-container" style="height:400px;">
 					<canvas id="chartCanvas_NEW_MIF"></canvas>
@@ -179,7 +179,7 @@
 
             <div id="TOTAL_TEXT">
 				<h4 id="country">IDB Lab 2019</h4>
-				<h4 id="legacy">All operations 2019 footprint</h4>
+				<h4 id="legacy">All sub-operations 2019 footprint</h4>
 				<p>
 				Retrieving data...
 				</p>
@@ -212,30 +212,30 @@
 
 <script id="template-1" type="text/template">
             <h4 id="country">IDB Lab {{OP_SUMMARY.year}} in {{OP_SUMMARY.country}}</h4>
-            <h4 id="legacy">Operations approved before {{OP_SUMMARY.year}}</h4>
+            <h4 id="legacy">Sub-operations approved before {{OP_SUMMARY.year}}</h4>
 			<p>
-				In {{OP_SUMMARY.year}} and in {{OP_SUMMARY.country}} there was already <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) active(s). From wich :
+				In {{OP_SUMMARY.year}} and in {{OP_SUMMARY.country}} there was already <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab sub-operation(s) active(s). From wich :
 				<ul>
-					<li>{{OP_SUMMARY.0.AF}} operation(s) approved and funded.</li>
-					<li>{{OP_SUMMARY.0.SI}} operation(s) signed.</li>
-					<li>{{OP_SUMMARY.0.EF}} operation(s) effective(s).</li>
-					<li>{{OP_SUMMARY.0.EL}} operation(s) eligible(s).</li>
-					<li>{{OP_SUMMARY.0.DI}} operation(s) in disbursements phase.</li>
-					<li>{{OP_SUMMARY.0.FD}} operation(s) in fully disbursed phase.</li>
+					<li>{{OP_SUMMARY.0.AF}} sub-operation(s) approved and funded.</li>
+					<li>{{OP_SUMMARY.0.SI}} sub-operation(s) signed.</li>
+					<li>{{OP_SUMMARY.0.EF}} sub-operation(s) effective(s).</li>
+					<li>{{OP_SUMMARY.0.EL}} sub-operation(s) eligible(s).</li>
+					<li>{{OP_SUMMARY.0.DI}} sub-operation(s) in disbursements phase.</li>
+					<li>{{OP_SUMMARY.0.FD}} sub-operation(s) in fully disbursed phase.</li>
 				</ul>
 			</p>
 			<p>
 				During this year, {{OP_SUMMARY.WAS_CLOSED}} were closed. From wich :
 				<ul>
-					<li>{{OP_SUMMARY.12.CA}} operation(s) were cancelled.</li>
-					<li>{{OP_SUMMARY.12.CO}} operation(s) were closed for operation.</li>
-					<li>{{OP_SUMMARY.12.CF}} operation(s) were closed for finance.</li>
+					<li>{{OP_SUMMARY.12.CA}} sub-operation(s) were cancelled.</li>
+					<li>{{OP_SUMMARY.12.CO}} sub-operation(s) were closed for sub-operation.</li>
+					<li>{{OP_SUMMARY.12.CF}} sub-operation(s) were closed for finance.</li>
 				</ul>
 			</p>
             <p>
 				<div style="display: flex; ">
 				<div class="chart-container" style="height:300px; width:66%; ">
-				<p>Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) started with an undisbursed amount of {{OP_SUMMARY.0.U}} USD$ eq. and was reduced to {{OP_SUMMARY.12.U}} USD$ eq. for a difference of {{OP_SUMMARY.d.U}} USD$ eq including:</p>
+				<p>Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab sub-operation(s) started with an undisbursed amount of {{OP_SUMMARY.0.U}} USD$ eq. and was reduced to {{OP_SUMMARY.12.U}} USD$ eq. for a difference of {{OP_SUMMARY.d.U}} USD$ eq including:</p>
 				<p> <ul>
 						<li>{{OP_SUMMARY.dp.C}} - {{OP_SUMMARY.dn.C}} USD$ eq. <b>cancelled</b> for a total difference of {{OP_SUMMARY.d.C}} USD$ eq.</li>
 						<li>{{OP_SUMMARY.dp.D}} - {{OP_SUMMARY.dn.D}} USD$ eq. <b>disbursed</b> for a total difference of {{OP_SUMMARY.d.D}} USD$ eq.</li>
@@ -249,31 +249,31 @@
 			</div>
 			</p>
 			<p>
-				Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) show an undisbursed amount of {{OP_SUMMARY.12.U}} USD$ eq. still avaible to disburse for next year.
+				Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab sub-operation(s) show an undisbursed amount of {{OP_SUMMARY.12.U}} USD$ eq. still avaible to disburse for next year.
 			</p>
 </script>
 
 <script id="template-2" type="text/template">
             <h4 id="country">IDB Lab {{OP_SUMMARY.year}} in {{OP_SUMMARY.country}}</h4>
-            <h4 id="legacy">Operations approved during {{OP_SUMMARY.year}}</h4>
+            <h4 id="legacy">Sub-operations approved during {{OP_SUMMARY.year}}</h4>
 			<p>
-				In {{OP_SUMMARY.year}} and in {{OP_SUMMARY.country}}, <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) were approved. At the end of the year they already reached :
+				In {{OP_SUMMARY.year}} and in {{OP_SUMMARY.country}}, <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab sub-operation(s) were approved. At the end of the year they already reached :
 				<ul>
-					<li>{{OP_SUMMARY.12.AF}} operation(s) approved and funded.</li>
-					<li>{{OP_SUMMARY.12.SI}} operation(s) signed.</li>
-					<li>{{OP_SUMMARY.12.EF}} operation(s) effective(s).</li>
-					<li>{{OP_SUMMARY.12.EL}} operation(s) eligible(s).</li>
-					<li>{{OP_SUMMARY.12.DI}} operation(s) in disbursements phase.</li>
-					<li>{{OP_SUMMARY.12.FD}} operation(s) in fully disbursed phase.</li>
-					<li>{{OP_SUMMARY.12.CA}} operation(s) were cancelled.</li>
-					<li>{{OP_SUMMARY.12.CO}} operation(s) were closed for operation.</li>
-					<li>{{OP_SUMMARY.12.CF}} operation(s) were closed for finance.</li>					
+					<li>{{OP_SUMMARY.12.AF}} sub-operation(s) approved and funded.</li>
+					<li>{{OP_SUMMARY.12.SI}} sub-operation(s) signed.</li>
+					<li>{{OP_SUMMARY.12.EF}} sub-operation(s) effective(s).</li>
+					<li>{{OP_SUMMARY.12.EL}} sub-operation(s) eligible(s).</li>
+					<li>{{OP_SUMMARY.12.DI}} sub-operation(s) in disbursements phase.</li>
+					<li>{{OP_SUMMARY.12.FD}} sub-operation(s) in fully disbursed phase.</li>
+					<li>{{OP_SUMMARY.12.CA}} sub-operation(s) were cancelled.</li>
+					<li>{{OP_SUMMARY.12.CO}} sub-operation(s) were closed for sub-operation.</li>
+					<li>{{OP_SUMMARY.12.CF}} sub-operation(s) were closed for finance.</li>					
 				</ul>
 			</p>
             <p>
 				<div style="display: flex; ">
 				<div class="chart-container" style="height:300px; width:66%; ">
-				<p>Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) with a total of approved amount of {{OP_SUMMARY.12.A}} USD$ eq. and was already reduced to {{OP_SUMMARY.12.U}} USD$ eq.</p>
+				<p>Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab sub-operation(s) with a total of approved amount of {{OP_SUMMARY.12.A}} USD$ eq. and was already reduced to {{OP_SUMMARY.12.U}} USD$ eq.</p>
 				<p> <ul>
 						<li>{{OP_SUMMARY.dp.C}} - {{OP_SUMMARY.dn.C}} USD$ eq. <b>cancelled</b> for a total difference of {{OP_SUMMARY.d.C}} USD$ eq.</li>
 						<li>{{OP_SUMMARY.dp.D}} - {{OP_SUMMARY.dn.D}} USD$ eq. <b>disbursed</b> for a total difference of {{OP_SUMMARY.d.D}} USD$ eq.</li>
@@ -287,31 +287,31 @@
 			</div>
 			</p>
 			<p>
-				Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) show an undisbursed amount of {{OP_SUMMARY.12.U}} USD$ eq. still avaible to disburse for next year.
+				Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab sub-operation(s) show an undisbursed amount of {{OP_SUMMARY.12.U}} USD$ eq. still avaible to disburse for next year.
 			</p>
 </script>
 
 <script id="template-3" type="text/template">
             <h4 id="country">IDB Lab {{OP_SUMMARY.year}} in {{OP_SUMMARY.country}}</h4>
-            <h4 id="legacy">All operations concerning {{OP_SUMMARY.year}}</h4>
+            <h4 id="legacy">All sub-operations concerning {{OP_SUMMARY.year}}</h4>
 			<p>
-				In {{OP_SUMMARY.year}} and in {{OP_SUMMARY.country}}, <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) were active at least one month of the year. At the end of the year they reached :
+				In {{OP_SUMMARY.year}} and in {{OP_SUMMARY.country}}, <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab sub-operation(s) were active at least one month of the year. At the end of the year they reached :
 				<ul>
-					<li>{{OP_SUMMARY.12.AF}} operation(s) approved and funded.</li>
-					<li>{{OP_SUMMARY.12.SI}} operation(s) signed.</li>
-					<li>{{OP_SUMMARY.12.EF}} operation(s) effective(s).</li>
-					<li>{{OP_SUMMARY.12.EL}} operation(s) eligible(s).</li>
-					<li>{{OP_SUMMARY.12.DI}} operation(s) in disbursements phase.</li>
-					<li>{{OP_SUMMARY.12.FD}} operation(s) in fully disbursed phase.</li>
-					<li>{{OP_SUMMARY.12.CA}} operation(s) were cancelled.</li>
-					<li>{{OP_SUMMARY.12.CO}} operation(s) were closed for operation.</li>
-					<li>{{OP_SUMMARY.12.CF}} operation(s) were closed for finance.</li>					
+					<li>{{OP_SUMMARY.12.AF}} sub-operation(s) approved and funded.</li>
+					<li>{{OP_SUMMARY.12.SI}} sub-operation(s) signed.</li>
+					<li>{{OP_SUMMARY.12.EF}} sub-operation(s) effective(s).</li>
+					<li>{{OP_SUMMARY.12.EL}} sub-operation(s) eligible(s).</li>
+					<li>{{OP_SUMMARY.12.DI}} sub-operation(s) in disbursements phase.</li>
+					<li>{{OP_SUMMARY.12.FD}} sub-operation(s) in fully disbursed phase.</li>
+					<li>{{OP_SUMMARY.12.CA}} sub-operation(s) were cancelled.</li>
+					<li>{{OP_SUMMARY.12.CO}} sub-operation(s) were closed for sub-operation.</li>
+					<li>{{OP_SUMMARY.12.CF}} sub-operation(s) were closed for finance.</li>					
 				</ul>
 			</p>
             <p>
 				<div style="display: flex; ">
 				<div class="chart-container" style="height:300px; width:66%; ">
-				<p>Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) with a total of approved amount of {{OP_SUMMARY.12.A}} USD$ eq. and was already reduced to {{OP_SUMMARY.12.U}} USD$ eq.</p>
+				<p>Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab sub-operation(s) with a total of approved amount of {{OP_SUMMARY.12.A}} USD$ eq. and was already reduced to {{OP_SUMMARY.12.U}} USD$ eq.</p>
 				<p> <ul>
 						<li>{{OP_SUMMARY.dp.C}} - {{OP_SUMMARY.dn.C}} USD$ eq. <b>cancelled</b> for a total difference of {{OP_SUMMARY.d.C}} USD$ eq.</li>
 						<li>{{OP_SUMMARY.dp.D}} - {{OP_SUMMARY.dn.D}} USD$ eq. <b>disbursed</b> for a total difference of {{OP_SUMMARY.d.D}} USD$ eq.</li>
@@ -325,7 +325,7 @@
 			</div>
 			</p>
 			<p>
-				Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab operation(s) show an undisbursed amount of {{OP_SUMMARY.12.U}} USD$ eq. still avaible to disburse for next year.
+				Those <b>{{OP_SUMMARY.TOTAL}}</b> IDB Lab sub-operation(s) show an undisbursed amount of {{OP_SUMMARY.12.U}} USD$ eq. still avaible to disburse for next year.
 			</p>
 </script>
 

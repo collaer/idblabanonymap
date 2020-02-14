@@ -316,8 +316,8 @@ var idblabchart = {
 	datas: [],
 	labels: [],
 	filters: [],
-	titleBase: "IDB Lab Op. 19",
-	title: "IDB Lab Op. 19",
+	titleBase: "IDB Lab Ap. 19",
+	title: "IDB Lab Ap. 19",
 	suffixeStartOfYear: " (S)",
 	suffixeEndOfYear: " (E)",
 	charts:{},
@@ -772,7 +772,7 @@ var idblabchart = {
 				},
 				title: {
 					display: true,
-					text: '2019 IDB Lab operations aggregated amounts, using currents filters.',
+					text: '2019 IDB Lab approvals aggregated amounts, using currents filters.',
 				},
 			}
 		});
@@ -983,7 +983,7 @@ var idblabchart = {
 				},
 				title: {
 					display: true,
-					text: '2019 IDB Lab operation ' + operation.PROJECT_NUMBER + ', approval ' + operation.OPERATION_NUMBER,
+					text: '2019 IDB Lab ' + operation.PROJECT_NUMBER + ', approval ' + operation.OPERATION_NUMBER,
 				}
 			}
 		});
