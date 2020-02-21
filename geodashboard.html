@@ -362,6 +362,10 @@
 			  </div>
 			  <select class="custom-select" id="GSELECT_FUND_CD_SELECT">
 				<option selected value="0" data-att-1="FUND_CD" data-val-1="" >All funds</option>
+				<option value="-1" data-att-1="FUND_CD" data-val-1="MSE,MSF">MSE+MSF</option>
+				<option value="-2" data-att-1="FUND_CD" data-val-1="!MSE,MSF">Not MSE/MSF</option>
+				<option value="15" data-att-1="FUND_CD" data-val-1="MSE">MSE</option>
+				<option value="16" data-att-1="FUND_CD" data-val-1="MSF">MSF</option>
 				<option value="1" data-att-1="FUND_CD" data-val-1="AUS">AUS</option>
 				<option value="2" data-att-1="FUND_CD" data-val-1="CCF">CCF</option>
 				<option value="3" data-att-1="FUND_CD" data-val-1="COF">COF</option>
@@ -376,8 +380,6 @@
 				<option value="12" data-att-1="FUND_CD" data-val-1="MCB">MCB</option>
 				<option value="13" data-att-1="FUND_CD" data-val-1="MHR">MHR</option>
 				<option value="14" data-att-1="FUND_CD" data-val-1="MPF">MPF</option>
-				<option value="15" data-att-1="FUND_CD" data-val-1="MSE">MSE</option>
-				<option value="16" data-att-1="FUND_CD" data-val-1="MSF">MSF</option>
 				<option value="17" data-att-1="FUND_CD" data-val-1="NDV">NDV</option>
 				<option value="18" data-att-1="FUND_CD" data-val-1="ORC">ORC</option>
 				<option value="19" data-att-1="FUND_CD" data-val-1="SCX">SCX</option>
@@ -437,7 +439,7 @@
 			<tr>
 			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Number of operations concerned by the filters either at first balance or last of the 2019 year.">
 				<a href="#" title="LifeCycle Chart" id="lifecycle_chart" data-toggle="chartWindow" data-target="#chartModalWindow" ><span class="fas fa-chart-pie fa-xs"></span>
-				<span id='nbTransactions'>x</span> op.</a>
+				<span id='nbTransactions'>x</span> App.</a>
 			  </th>
 			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Filtering values concerning the financial balance of end of month (EOM) of Dicember 2018. In case of new created project, it will be the first official end of month balance of creation during 2019.">12/31/2018*</th>
 			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Filtering values concerning the financial balance of end of month (EOM) of Dicember 2019 o del ultimo possible segun la fecha de hoy.">12/31/2019*</th>

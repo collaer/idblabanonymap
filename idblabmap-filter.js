@@ -67,23 +67,40 @@ var FilterAttribute = function(options){
      * Can be called outside class
      */
     this.check = function(properties){
-		//console.log('check if '+properties+ ' is okay agaisnt ' + vars.attribute + ' @ '+ vars.value);
+		consoleAtt="PLZ DONT";
+		if (properties[vars.attribute] == consoleAtt)
+			console.log('check if '+properties[vars.attribute]+ ' is okay agaisnt ' + vars.attribute + ' @ '+ vars.value);
 		isOk = false;
+		attValue = "" + vars.value; //otherwise if the value is "1" it is interpreted as numeric not string
+		isNot = false;
+		
+		if (attValue.includes('!')) {
+			//CASE 1) A ! is present that means "NOT IN"
+			attValue = attValue.replace("!", "");
+			isNot = true;
+		}
+
 		switch(vars.type){
 			case '=':
-				isOk = (vars.value === '' || properties[vars.attribute] == vars.value);
+				isOk = (attValue === '' || properties[vars.attribute] == attValue);
 			break;
 			case 'IN':
-				isOk = (
-					vars.value === '' || 
-					vars.value.includes("" + properties[vars.attribute] + "") 
-				);
-				//console.log(vars.value + ' include ' + properties[vars.attribute]);
+				if (attValue.includes(',')) {
+					isOk = (
+						attValue === '' || 
+						attValue.includes("" + properties[vars.attribute] + "") 
+					);
+				} else {
+					isOk = (attValue === '' || properties[vars.attribute] == attValue);
+				}
+				if (properties[vars.attribute] == consoleAtt)
+					console.log(vars.value + ' include ' + properties[vars.attribute]);
 			break;
 			default:
 				console.log('Error: undefined filter type!');
 		}
-		return isOk;
+		
+		return isNot?!isOk:isOk;
     };
  
 
