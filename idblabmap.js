@@ -230,9 +230,17 @@ $(document).ready(function () {
 
 	});
 	
+	var setDefault = $.urlParam('STD-FILTERS') || $.urlParam('std-filters') || false;
+	if (setDefault) {
+		$("#GSELECT_FUND_CD_SELECT").val(-1);
+		$("#GSELECT_WAS_CLOSED").val(1);
+		
+	} else {
+		$("#GSELECT_FUND_CD_SELECT").val(0);
+		$("#GSELECT_WAS_CLOSED").val(0);
+	}
 	
 	$("#GSELECT_STATUS_SELECT").val(0);
-	$("#GSELECT_WAS_CLOSED").val(0);
 	$("#GSELECT_FOCUS_CD").val(0);
 	$("#GSELECT_REGION_CD").val(0);
 	$("#GSELECT_ISO_A3").val(0);
@@ -241,7 +249,6 @@ $(document).ready(function () {
 	$("#GSELECT_PRODUCT_CD").val(0);
 	$("#GSELECT_LENDING_INSTRMNT_CD").val(0);
 	$("#GSELECT_STATUS_CD_DIC").val(0);
-	$("#GSELECT_FUND_CD_SELECT").val(0);
 	$("#GSELECT_FINANCIAL_INSTRUMENT_CD_SELECT").val(0);
 	
 	$('#removeAllFilter').on('click', function () {
