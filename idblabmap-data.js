@@ -157,6 +157,21 @@ function filter_country(ISO_A3) {
 	$('.custom-select').trigger('change');
 };
 
+//https://www.w3resource.com/javascript-exercises/javascript-string-exercise-16.php
+text_truncate = function(str, length, ending) {
+    if (length == null) {
+      length = 100;
+    }
+    if (ending == null) {
+      ending = '...';
+    }
+    if (str.length > length) {
+      return str.substring(0, length - ending.length) + ending;
+    } else {
+      return str;
+    }
+  };
+
 function joinData() {
 	
 	//var countriesGeoJson = countriesLayer.getGeoJSON();
@@ -218,8 +233,9 @@ function joinData() {
 			'<tr onclick="openChart(\'' + operation.properties.OPERATION_NUMBER + '\')">\n'+
 			'<th ' + styleFocus + ' scope="row">' + linkProjectFormatter(counter, operation.properties) + '</th>\n'+
 			'<td>' + linkProjectFormatter(operation.properties.OPERATION_NUMBER, operation.properties) + '</td>\n'+
-			'<td>' + linkProjectFormatter(operation.properties.PROJECT_NUMBER, operation.properties) + '</td>\n'+
-			'<td>' + operation.properties.SECTOR_CD + '</td>\n'+
+			'<td>' + text_truncate("" + operation.properties.OPERATION_NAME,93,"...") + '</td>\n'+
+			//'<td>' + linkProjectFormatter(operation.properties.PROJECT_NUMBER, operation.properties) + '</td>\n'+
+			//'<td>' + operation.properties.SECTOR_CD + '</td>\n'+
 			'<td>' + undisbursed_dic + '</td>\n'+
 			'<td>' + delta_disb + '</td>\n'+
 			'<td>' + delta_cancel + '</td>\n'+
@@ -233,8 +249,9 @@ function joinData() {
               '<tr>\n'+
                 '<th scope="col">#</th>\n'+
                 '<th scope="col">Operation number</th>\n'+
-                '<th scope="col">Project number</th>\n'+
-                '<th scope="col">Sector code</th>\n'+
+                '<th scope="col">Title</th>\n'+
+                //'<th scope="col">Project number</th>\n'+
+                //'<th scope="col">Sector code</th>\n'+
                 '<th scope="col">Undisbursed</th>\n'+
                 '<th scope="col">Δ Disburs.</th>\n'+
                 '<th scope="col">Δ Cancel</th>\n'+
@@ -295,7 +312,25 @@ $('.custom-select').change(function(e) {
 			var val = option_selected.data('val-'+i);	
 			//console.log(i + ') '+ prop + ' = ' + val + '?');
 			dirty = Filters.apply(prop, val) || dirty;
-		}
+		};
+		//console.log($(this).parent());
+		//console.log($(this).parents("div.input-group"));
+		var ig = $(this).parents("div.input-group");
+		var label = ig.find('label');
+		var slect = ig.find('select');
+		//console.log(ig);
+		//console.log(slect);
+		if (0 == option_selected.val()) {
+			label.removeClass('text-white');
+			slect.removeClass('text-white');
+			label.removeClass('bg-dark');
+			slect.removeClass('bg-dark');
+		} else {
+			slect.addClass('text-white');
+			label.addClass('text-white');
+			slect.addClass('bg-dark');
+			label.addClass('bg-dark');
+		};
 	});
 
 	if (dirty == 1) {

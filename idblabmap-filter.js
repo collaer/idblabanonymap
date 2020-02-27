@@ -267,6 +267,11 @@ function getTableJSONFromFeature(features) {
 		var jsonoperation={
 			PROJECT_NUMBER:operation.properties.PROJECT_NUMBER
 			,OPERATION_NUMBER:operation.properties.OPERATION_NUMBER
+			,OPERATION_NAME:operation.properties.OPERATION_NAME
+			,OPERATION_ABSTRACT:operation.properties.OPERATION_ABSTRACT
+			,OPERATION_SPECIALIST:operation.properties.OPERATION_SPECIALIST
+			,OPERATION_SPECIALIST_EMAIL:operation.properties.OPERATION_SPECIALIST_EMAIL
+			,OPERATION_AGENCY:operation.properties.OPERATION_AGENCY
 			,BALANCE_DATE:operation.properties.BALANCE_DATE
 			,STATUS: operation.properties.STATUS_CD_DIC
 			,PRODUCT_CD:operation.properties.PRODUCT_CD
