@@ -318,7 +318,7 @@ $('.custom-select').change(function(e) {
 			//console.log(i + ') '+ prop + ' = ' + val + '?');
 			dirty = Filters.apply(prop, val) || dirty;
 		};
-
+		//Yoda condition :D
 		if (0 != option_selected.val()) {
 			var ig = $(this).parents("div.input-group");
 			var label = ig.find('label');
