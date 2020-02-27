@@ -304,6 +304,11 @@ function joinData() {
 
 $('.custom-select').change(function(e) {
 	var dirty = 0;
+	
+	$('div.input-group label').removeClass('text-white');
+	$('div.input-group select').removeClass('text-white');
+	$('div.input-group label').removeClass('bg-dark');
+	$('div.input-group select').removeClass('bg-dark');
 
 	$( ".custom-select option:selected" ).each(function() {   //$(e.currentTarget)[0];
 		var option_selected = $(this);
@@ -313,19 +318,12 @@ $('.custom-select').change(function(e) {
 			//console.log(i + ') '+ prop + ' = ' + val + '?');
 			dirty = Filters.apply(prop, val) || dirty;
 		};
-		//console.log($(this).parent());
-		//console.log($(this).parents("div.input-group"));
-		var ig = $(this).parents("div.input-group");
-		var label = ig.find('label');
-		var slect = ig.find('select');
-		//console.log(ig);
-		//console.log(slect);
-		if (0 == option_selected.val()) {
-			label.removeClass('text-white');
-			slect.removeClass('text-white');
-			label.removeClass('bg-dark');
-			slect.removeClass('bg-dark');
-		} else {
+
+		if (0 != option_selected.val()) {
+			var ig = $(this).parents("div.input-group");
+			var label = ig.find('label');
+			var slect = ig.find('select');
+		
 			slect.addClass('text-white');
 			label.addClass('text-white');
 			slect.addClass('bg-dark');
