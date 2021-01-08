@@ -1,5 +1,7 @@
 # IUDB Lab 2019 Geodashboard
 
+To see live demo : https://collaer.github.io/idblabanonymap/geodashboard
+
 Testing tools and solutions for building vizualization tools for the lab.
 
 Using sample of great OpenSource solutions and libraries, and their dependencies:
