@@ -1,5 +1,9 @@
 # IDB Lab 2019 Geodashboard
 
+Live demo with anonyzed data here : "https://collaer.github.io/idblabanonymap/geodashboard
+
+To see the code go to gh-pages branch of this repository.
+
 Testing tools and solutions for building vizualization tools for the lab.
 
 Using sample of great OpenSource solutions and libraries, and their dependencies:
