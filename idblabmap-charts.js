@@ -316,8 +316,8 @@ var idblabchart = {
 	datas: [],
 	labels: [],
 	filters: [],
-	titleBase: "IDB Lab Ap. 19",
-	title: "IDB Lab Ap. 19",
+	titleBase: "IDB Lab Ap. 20",
+	title: "IDB Lab Ap. 20",
 	suffixeStartOfYear: " (S)",
 	suffixeEndOfYear: " (E)",
 	charts:{},
@@ -477,7 +477,7 @@ var idblabchart = {
 			for (idx in this.labels[1]) {
 				datasets.push(
 					{
-						//labels: 'Start 2019', //this.labels[0],
+						//labels: 'Start 20', //this.labels[0],
 						label:  this.codeLabels[1][idx] + this.suffixeStartOfYear, //this.labels[1][idx],
 						data: this.datas[0][idx],
 						stack: 0
@@ -486,7 +486,7 @@ var idblabchart = {
 				if (!oneStack) {
 					datasets.push(
 						{
-							//labels: 'End of 2019', //this.labels[0],
+							//labels: 'End of 20', //this.labels[0],
 							label: this.codeLabels[1][idx] + this.suffixeEndOfYear, //this.labels[1][idx],
 							data: this.datas[1][idx],
 							stack: 1
@@ -497,17 +497,17 @@ var idblabchart = {
 		} else {
 			if (!oneStack) {
 				datasets = [{
-							label: 'Start 2019', //this.labels[0],
+							label: 'Start 20', //this.labels[0],
 							data: this.datas[0][0],
 							stack: 0
 						},{
-							label: 'End of 2019', //this.labels[0],
+							label: 'End of 20', //this.labels[0],
 							data: this.datas[1][0],
 							stack: 1
 						}];
 			} else {
 				datasets = [{
-							label: '2019',
+							label: '20',
 							data: this.datas[0][0],
 							stack: 0
 						}];
@@ -622,7 +622,7 @@ var idblabchart = {
 		
 		this.labels = [
 			['Apprvd', 'Undisb.', 'Disb.', 'Cancel.', 'Anomaly'],
-			['31dec-18','Jan','Fev','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec-19' ]
+			['31dec-19','Jan','Fev','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec-20' ]
 		];
 		
 		this.data = [[],[],[],[],[]];
@@ -772,7 +772,7 @@ var idblabchart = {
 				},
 				title: {
 					display: true,
-					text: '2019 IDB Lab approvals aggregated amounts, using currents filters.',
+					text: '2020 IDB Lab aggregated approvals (using currents filters).',
 				},
 			}
 		});
@@ -800,7 +800,7 @@ var idblabchart = {
 		
 		this.labels = [
 			['Apprvd', 'Undisb.', 'Disb.', 'Cancel.', 'Anomaly'],
-			['31dec-18','Jan','Fev','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec-19' ]
+			['31dec-19','Jan','Fev','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec-20' ]
 		];
 		
 		this.data = [[],[],[],[],[]];
@@ -983,7 +983,7 @@ var idblabchart = {
 				},
 				title: {
 					display: true,
-					text: '2019 IDB Lab ' + operation.PROJECT_NUMBER + ', approval ' + operation.OPERATION_NUMBER,
+					text: '2020 IDB Lab ' + operation.PROJECT_NUMBER + ', approval ' + operation.OPERATION_NUMBER,
 				}
 			}
 		});

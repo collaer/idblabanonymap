@@ -1,8 +1,9 @@
 var operations;
 var OPERATIONS_GEOJSON = (window.location.href.indexOf("file:")==-1 || true ?
-"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/operations-anonymized-2019.geojson"
+//"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/operations-anonymized-2020.geojson"
+"./DATA/operations-snapshot-2020.geojson"
 :
-"./DATA/bidlab2019October.geojson");
+"./DATA/operations-snapshot-2020.geojson");
 
 function countryFilter(feature, layer) {
   if (feature.properties.ISO_A3 === ISO_A3_FILTER) return true;
@@ -32,7 +33,7 @@ getEmptyOperationSummary = function() {
 	};
 
 	var operationsSummaryTemplate= {
-		year:2019,
+		year:2020,
 		country:'',
 		TOTAL:0,
 		WAS_CLOSED:0,
@@ -85,7 +86,7 @@ getEmptyOperationSummary = function() {
 var refreshOperationSummary=function(jsonOperations, Country) {
 	operationsSummary = getEmptyOperationSummary();
 	
-	operationsSummary.year = '2019';
+	operationsSummary.year = '2020';
 	operationsSummary.country = Country;
 	
 	jsonOperations.forEach(

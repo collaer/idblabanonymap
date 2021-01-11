@@ -11,8 +11,8 @@
 			};
 			
 			var add_operation = function(me, v0, v1) {	
-				v0 = (v0 == null? 0.0 : parseFloat(v0));
-				v1 = (v1 == null? 0.0 : parseFloat(v1));
+				v0 = (v0 == null || v0 == ""? 0.0 : parseFloat(v0));
+				v1 = (v1 == null || v1 == ""? 0.0 : parseFloat(v1));
 				
 				me.val_year0 += v0;
 				me.val_year1 += v1;
@@ -57,21 +57,21 @@
 			}
 			,updateHTML: function() {
 				$('#nbTransactions').html(this.approved.counter);
-				$(this.approved.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current approved amounts in the End Of Month balance of last day of 2018.">' + new Money(this.approved.val_year0) + '</div>'));
-				$(this.approved.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current approved amounts in the End Of Month balance of last day of 2019 or last one available (depend of current date).">' + new Money(this.approved.val_year1) + '</div>'));
-				$(this.approved.getId(3)).html($('<div data-toggle="tooltip-dynamic" data-placement="right" title=" + ' + new Money(this.approved.delta_positif) + ' and ' + new Money(this.approved.delta_negatif) + '">' + new Money(this.approved.delta()) + ' <span class="fas fa-info-circle fa-xs"></span></div>'));
+				$(this.approved.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current approved amounts in the End Of Month balance of last day of 2019 ' + new Money(this.approved.val_year0) + ' USD.">' + new MoneyHumanReadable(this.approved.val_year0) + '</div>'));
+				$(this.approved.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current approved amounts in the End Of Month balance of last day of 2020 ' + new Money(this.approved.val_year1) + ' USD.">' + new MoneyHumanReadable(this.approved.val_year1) + '</div>'));
+				$(this.approved.getId(3)).html($('<div data-toggle="tooltip-dynamic" data-placement="right" title=" + ' + new Money(this.approved.delta_positif) + ' USD and ' + new Money(this.approved.delta_negatif) + ' USD.">' + new MoneyHumanReadable(this.approved.delta()) + ' <span class="fas fa-info-circle fa-xs"></span></div>'));
 
-				$(this.undisbursed.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current undisbursed amounts in the End Of Month balance of last day of 2018.">' + new Money(this.undisbursed.val_year0) + '</div>'));
-				$(this.undisbursed.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current undisbursed amounts in the End Of Month balance of last day of 2019 or last one available (depend of current date).">' + new Money(this.undisbursed.val_year1) + '</div>'));
-				$(this.undisbursed.getId(3)).html($('<div data-toggle="tooltip-dynamic" data-placement="right" title=" + ' + new Money(this.undisbursed.delta_positif) + ' and ' + new Money(this.undisbursed.delta_negatif) + '">' + new Money(this.undisbursed.delta()) + ' <span class="fas fa-info-circle fa-xs"></span></div>'));
+				$(this.undisbursed.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current undisbursed amounts in the End Of Month balance of last day of 2019 ' + new Money(this.undisbursed.val_year0) + ' USD.">' + new MoneyHumanReadable(this.undisbursed.val_year0) + '</div>'));
+				$(this.undisbursed.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current undisbursed amounts in the End Of Month balance of last day of 2020 ' + new Money(this.undisbursed.val_year1) + ' USD.">' + new MoneyHumanReadable(this.undisbursed.val_year1) + '</div>'));
+				$(this.undisbursed.getId(3)).html($('<div data-toggle="tooltip-dynamic" data-placement="right" title=" + ' + new Money(this.undisbursed.delta_positif) + ' USD and ' + new Money(this.undisbursed.delta_negatif) + ' USD.">' + new MoneyHumanReadable(this.undisbursed.delta()) + ' <span class="fas fa-info-circle fa-xs"></span></div>'));
 				
-				$(this.disbursed.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current disbursed amounts in the End Of Month balance of last day of 2018.">' + new Money(this.disbursed.val_year0) + '</div>'));
-				$(this.disbursed.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current disbursed amounts in the End Of Month balance of last day of 2019 or last one  available (depend of current date).">' + new Money(this.disbursed.val_year1) + '</div>'));
-				$(this.disbursed.getId(3)).html($('<div data-toggle="tooltip-dynamic" data-placement="right" title=" + ' + new Money(this.disbursed.delta_positif) + ' and ' + new Money(this.disbursed.delta_negatif) + '">' + new Money(this.disbursed.delta()) + ' <span class="fas fa-info-circle fa-xs"></span></div>'));
+				$(this.disbursed.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current disbursed amounts in the End Of Month balance of last day of 2019 ' + new Money(this.disbursed.val_year0) + ' USD.">' + new MoneyHumanReadable(this.disbursed.val_year0) + '</div>'));
+				$(this.disbursed.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current disbursed amounts in the End Of Month balance of last day of 2020 ' + new Money(this.disbursed.val_year1) + ' USD.">' + new MoneyHumanReadable(this.disbursed.val_year1) + '</div>'));
+				$(this.disbursed.getId(3)).html($('<div data-toggle="tooltip-dynamic" data-placement="right" title=" + ' + new Money(this.disbursed.delta_positif) + ' USD and ' + new Money(this.disbursed.delta_negatif) + ' USD.">' + new MoneyHumanReadable(this.disbursed.delta()) + ' <span class="fas fa-info-circle fa-xs"></span></div>'));
 				
-				$(this.cancelled.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current cancelled amounts in the End Of Month balance of last day of 2018.">' + new Money(this.cancelled.val_year0) + '</div>'));
-				$(this.cancelled.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current cancelled amounts in the End Of Month balance of last day of 2019 or last one available (depend of current date).">' + new Money(this.cancelled.val_year1) + '</div>'));
-				$(this.cancelled.getId(3)).html($('<div data-toggle="tooltip-dynamic" data-placement="right" title=" + ' + new Money(this.cancelled.delta_positif) + ' and ' + new Money(this.cancelled.delta_negatif) + '">' + new Money(this.cancelled.delta()) + ' <span class="fas fa-info-circle fa-xs"></span></div>'));
+				$(this.cancelled.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current cancelled amounts in the End Of Month balance of last day of 2019.">' + new MoneyHumanReadable(this.cancelled.val_year0) + '</div>'));
+				$(this.cancelled.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current cancelled amounts in the End Of Month balance of last day of 2020 or last one available (depend of current date).">' + new MoneyHumanReadable(this.cancelled.val_year1) + '</div>'));
+				$(this.cancelled.getId(3)).html($('<div data-toggle="tooltip-dynamic" data-placement="right" title=" + ' + new Money(this.cancelled.delta_positif) + ' USD and ' + new Money(this.cancelled.delta_negatif) + ' USD.">' + new MoneyHumanReadable(this.cancelled.delta()) + ' <span class="fas fa-info-circle fa-xs"></span></div>'));
 				
 				$(function () {
 					$('[data-toggle="tooltip-dynamic"]').tooltip()
@@ -84,7 +84,7 @@
 
 		var Filters = new FiltersClass({
 			attributes  : [
-				new FilterAttribute({attribute:'PRODUCT_CD',type:'='})
+				new FilterAttribute({attribute:'PRODUCT_CD',type:'IN'})
 				,new FilterAttribute({attribute:'SECTOR_CD',type:'='})
 				,new FilterAttribute({attribute:'REGION_CD',type:'='})
 				,new FilterAttribute({attribute:'WAS_OPEN',type:'='})
@@ -92,12 +92,13 @@
 				,new FilterAttribute({attribute:'SECTOR',type:'='})
 				,new FilterAttribute({attribute:'NO_TRANSACTIONS',type:'='})
 				,new FilterAttribute({attribute:'FOCUS_CD',type:'='})
-				,new FilterAttribute({attribute:'STATUS_CD_DIC',type:'='})
+				,new FilterAttribute({attribute:'STATUS_CD_DIC',type:'IN'})
 				,new FilterAttribute({attribute:'LENDING_INSTRMNT_CD',type:'='})
 				,new FilterAttribute({attribute:'STATUS_SELECT',type:'IN'})
 				,new FilterAttribute({attribute:'ISO_A3',type:'='})
 				,new FilterAttribute({attribute:'FINANCIAL_INSTRUMENT_CD',type:'='})
 				,new FilterAttribute({attribute:'FUND_CD',type:'IN'})
+				,new FilterAttribute({attribute:'OPERATION_SPECIALIST',type:'='})
 			],
 			infoSelector : '#filters_info'
 		});

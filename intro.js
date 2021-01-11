@@ -88,7 +88,7 @@ function startIntro(){
 	intro.setOptions({
 		steps: [{
 				element: '#idblab-logo',
-				intro: "Welcome to the IDB Lab map 2019 footprint test page, let's have a tour of his main functionalities."
+				intro: "Welcome to the IDB Lab map 2020 test page, let's have a tour of his main functionalities."
 						+ "<br /><br /> You can skip this tutorial by clicking on the <b>Skip</b> button."
 						+ "<br /> Use your <b>keyboard</b> arrows or the <b>Next</b> button to go throught the tutorial funcionalities tour."
 			},{
@@ -108,7 +108,7 @@ function startIntro(){
 				intro: 'In this popup window, you may click on an operation number or a project number to open a new window and retrieve operation detail.'
 			},{
 				element: '#chartModalWindow',
-				intro: 'Also, by clicking on an operation row of the coutry operation list, it will open this graph of his life cylce during the year 2019.'
+				intro: 'Also, by clicking on an operation row of the coutry operation list, it will open this graph of his life cylce during the year 2020.'
 			},{
 				element: '#button-wrapper',
 				intro: 'Thoose the 3 buttons are for:'
@@ -122,7 +122,7 @@ function startIntro(){
 				+ '<br /> <br/> Mixing filters will be done using a AND clause, only operations correponding to all filters will be selected.'
 			},{
 				element: '#GSELECT_WAS_CLOSED',
-				intro: 'I\'ve just selected an option here and filtered the operations based on their <b>Lifecycle</b> "approved during 2019" in order to show only the operations that were approved during this year.'
+				intro: 'I\'ve just selected an option here and filtered the operations based on their <b>Lifecycle</b> "approved during 2020" in order to show only the operations that were approved during this year.'
 				+ '<br />You may have noticed that the map was updated.'
 		},{
 				element: '#totalsTable',
@@ -140,7 +140,7 @@ function startIntro(){
 						+ '<br />- and of <b>TCP</b> product.'
 		},{
 				element: '#chartModalWindow',
-				intro: 'Here is it, we finished this first tour of the test page dedicated to an IDB Lab 2019 operation footprint vizualization page\'s functionalities, there are still more. Feel free to try all of them.<br /><br />Note: I\'ve also resetted all the filters.'
+				intro: 'Here is it, we finished this first tour of the test page dedicated to an IDB Lab 2020 operation footprint vizualization page\'s functionalities, there are still more. Feel free to try all of them.<br /><br />Note: I\'ve also resetted all the filters.'
 		}]
 	});
 	

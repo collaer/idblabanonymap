@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>IDB Lab 2019 Operations Footprint Map</title>
+    <title>IDB Lab 2020 Operations Test Concept Map</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -74,10 +74,10 @@
 			  <div class="input-group-prepend">
 				<label class="input-group-text" for="GSELECT_STATUS_SELECT">
 				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Scope" data-content="Defining here wich operations will be taken in account. 
-				All actives means that each operation was in ACTIVE statys at one time in 2019, at least 1 day during 2019 (either in 31/12/2018 or last balance of 2019).
+				All actives means that each operation was in ACTIVE statys at one time in 2020, at least 1 day during 2020 (either in 31/12/2019 or last balance of 2020).
 				Actives without FD: Only considering actives but not just fully disbursed FD.
-				Only DI : Only considering operations that were at least in Disbursment phase during at least one day of 2019.
-				Only DI or EL: Only considering operations that were at least in Disbursment or Elegibility phase during at least one day of 2019.
+				Only DI : Only considering operations that were at least in Disbursment phase during at least one day of 2020.
+				Only DI or EL: Only considering operations that were at least in Disbursment or Elegibility phase during at least one day of 2020.
 				"><span class="fas fa-info-circle fa-xs"></span></a>
 				&nbsp; Scope
 				</label>
@@ -94,24 +94,24 @@
 		  <div class="input-group input-group-sm mb-2 introjs-fixparent" id="GSELECT_WAS_CLOSED_INPUTGROUP">
 			  <div class="input-group-prepend introjs-showElement">
 				<label class="input-group-text introjs-showElement" for="GSELECT_WAS_CLOSED">
-				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="LifeCycle" data-content="Filter operations based on what happened to them during 2019
-				Approved in 2019, Not approved in 2019, went inactive (CO, CF or CA), went fully disbursed in 2019 and still not closed at the end of 2019, Closed, 
-				Crossing means that were active before and still active after 2019, with or without tr means financial transactions as disbursments or cancellations."><span class="fas fa-info-circle fa-xs"></span></a>
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="LifeCycle" data-content="Filter operations based on what happened to them during 2020
+				Approved in 2020, Not approved in 2020, went inactive (CO, CF or CA), went fully disbursed in 2020 and still not closed at the end of 2020, Closed, 
+				Crossing means that were active before and still active after 2020, with or without tr means financial transactions as disbursments or cancellations."><span class="fas fa-info-circle fa-xs"></span></a>
 				&nbsp; LifeCycle &nbsp;
 				</label>
 			  </div>
 			  <select class="custom-select introjs-showElement" id="GSELECT_WAS_CLOSED">
 				<option selected value="0" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="" data-att-3="NO_TRANSACTIONS" data-val-3="">All</option>
-				<option value="1" data-att-1="WAS_OPEN" data-val-1="1" data-att-2="WAS_CLOSED" data-val-2="" data-att-3="NO_TRANSACTIONS" data-val-3="">Approved in 2019</option>
-				<option value="-1" data-att-1="WAS_OPEN" data-val-1="0" data-att-2="WAS_CLOSED" data-val-2="" data-att-3="NO_TRANSACTIONS" data-val-3="">Approved before 2019</option>
-				<option value="20" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="CF,CO,1" data-att-3="NO_TRANSACTIONS" data-val-3="">Closed in 2019</option>
-				<option value="21" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="FD" data-att-3="NO_TRANSACTIONS" data-val-3="">Fully Disb in 2019</option>
-				<option value="22" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="CO" data-att-3="NO_TRANSACTIONS" data-val-3="">Closed for Operation in 2019</option>
-				<option value="23" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="CF" data-att-3="NO_TRANSACTIONS" data-val-3="">Closed for finance in 2019</option>
-				<option value="24" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="FD,CF,CO,1" data-att-3="NO_TRANSACTIONS" data-val-3="">Closed or FD in 2019</option>
-				<option value="3" data-att-1="WAS_OPEN" data-val-1="0" data-att-2="WAS_CLOSED" data-val-2="0," data-att-3="NO_TRANSACTIONS" data-val-3="">Crossing 2019</option>
-				<option value="4" data-att-1="WAS_OPEN" data-val-1="0" data-att-2="WAS_CLOSED" data-val-2="0," data-att-3="NO_TRANSACTIONS" data-val-3="0">Crossing 2019, with tr.</option>
-				<option value="5" data-att-1="WAS_OPEN" data-val-1="0" data-att-2="WAS_CLOSED" data-val-2="0," data-att-3="NO_TRANSACTIONS" data-val-3="1">Crossing 2019, without tr.</option>
+				<option value="1" data-att-1="WAS_OPEN" data-val-1="1" data-att-2="WAS_CLOSED" data-val-2="" data-att-3="NO_TRANSACTIONS" data-val-3="">Approved in 2020</option>
+				<option value="-1" data-att-1="WAS_OPEN" data-val-1="0" data-att-2="WAS_CLOSED" data-val-2="" data-att-3="NO_TRANSACTIONS" data-val-3="">Approved before 2020</option>
+				<option value="20" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="CF,CO,1" data-att-3="NO_TRANSACTIONS" data-val-3="">Closed in 2020</option>
+				<option value="21" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="FD" data-att-3="NO_TRANSACTIONS" data-val-3="">Fully Disb in 2020</option>
+				<option value="22" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="CO" data-att-3="NO_TRANSACTIONS" data-val-3="">Closed for Operation in 2020</option>
+				<option value="23" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="CF" data-att-3="NO_TRANSACTIONS" data-val-3="">Closed for finance in 2020</option>
+				<option value="24" data-att-1="WAS_OPEN" data-val-1="" data-att-2="WAS_CLOSED" data-val-2="FD,CF,CO,1" data-att-3="NO_TRANSACTIONS" data-val-3="">Closed or FD in 2020</option>
+				<option value="3" data-att-1="WAS_OPEN" data-val-1="0" data-att-2="WAS_CLOSED" data-val-2="0," data-att-3="NO_TRANSACTIONS" data-val-3="">Crossing 2020</option>
+				<option value="4" data-att-1="WAS_OPEN" data-val-1="0" data-att-2="WAS_CLOSED" data-val-2="0," data-att-3="NO_TRANSACTIONS" data-val-3="0">Crossing 2020, with tr.</option>
+				<option value="5" data-att-1="WAS_OPEN" data-val-1="0" data-att-2="WAS_CLOSED" data-val-2="0," data-att-3="NO_TRANSACTIONS" data-val-3="1">Crossing 2020, without tr.</option>
 			  </select>
 			</div>
 
@@ -123,7 +123,7 @@
 				</label>
 			  </div>
 			  <select class="custom-select" id="GSELECT_FOCUS_CD">
-				<option selected value="0" data-att-1="FOCUS_CD" data-val-1="">Todos</option>
+				<option selected value="0" data-att-1="FOCUS_CD" data-val-1="">All</option>
 				<option value="ICI" data-att-1="FOCUS_CD" data-val-1="ICI">Inclusive cities</option>
 				<option value="KEC" data-att-1="FOCUS_CD" data-val-1="KEC">Knowledge economy</option>
 				<option value="CSA" data-att-1="FOCUS_CD" data-val-1="CSA">Climate-Smart Agriculture</option>
@@ -140,7 +140,7 @@
 				</label>
 			  </div>
 			  <select class="custom-select" id="GSELECT_REGION_CD">
-				<option selected value="0" data-att-1="REGION_CD" data-val-1="">Todas</option>
+				<option selected value="0" data-att-1="REGION_CD" data-val-1="">All</option>
 				<option value="CSC" data-att-1="REGION_CD" data-val-1="CSC">CSC</option>
 				<option value="CID" data-att-1="REGION_CD" data-val-1="CID">CID</option>
 				<option value="CAN" data-att-1="REGION_CD" data-val-1="CAN">CAN</option>
@@ -157,7 +157,7 @@
 				</label>
 			  </div>
 			  <select class="custom-select" id="GSELECT_ISO_A3">
-				<option selected value="0" data-att-1="ISO_A3" data-val-1="">Todos</option>
+				<option selected value="0" data-att-1="ISO_A3" data-val-1="">All</option>
 				<option value="ARG" data-att-1="ISO_A3" data-val-1="ARG">Argentina</option>
 				<option value="BHS" data-att-1="ISO_A3" data-val-1="BHS">Bahamas</option>
 				<option value="BRB" data-att-1="ISO_A3" data-val-1="BRB">Barbados</option>
@@ -194,7 +194,7 @@
 				&nbsp; Sector</label>
 			  </div>
 			  <select class="custom-select" id="GSELECT_SECTOR_CD">
-				<option selected value="0" data-att-1="SECTOR_CD" data-val-1="">Todos</option>
+				<option selected value="0" data-att-1="SECTOR_CD" data-val-1="">All</option>
 				<option value="AG" data-att-1="SECTOR_CD" data-val-1="AG">Agriculture</option>
 				<option value="AS" data-att-1="SECTOR_CD" data-val-1="AS">Water & Sanitation</option>
 				<option value="DU" data-att-1="SECTOR_CD" data-val-1="DU">Urban Development</option>
@@ -330,7 +330,9 @@
 				</label>
 			  </div>
 			  <select class="custom-select" id="GSELECT_PRODUCT_CD">
-				<option selected value="0" data-att-1="PRODUCT_CD" data-val-1="">Todos</option>
+				<option selected value="0" data-att-1="PRODUCT_CD" data-val-1="">All</option>
+				<option value="-1" data-att-1="PRODUCT_CD" data-val-1="TCP,IGR">TCP and IGR</option>
+				<option value="-2" data-att-1="PRODUCT_CD" data-val-1="EQU,LON">EQU and LON</option>
 				<option value="TCP" data-att-1="PRODUCT_CD" data-val-1="TCP">TCP</option>
 				<option value="IGR" data-att-1="PRODUCT_CD" data-val-1="IGR">IGR</option>
 				<option value="EQU" data-att-1="PRODUCT_CD" data-val-1="EQU">EQU</option>
@@ -346,7 +348,7 @@
 				</label>
 			  </div>
 			  <select class="custom-select" id="GSELECT_LENDING_INSTRMNT_CD">
-				<option selected value="0" data-att-1="LENDING_INSTRMNT_CD" data-val-1="">Todos</option>
+				<option selected value="0" data-att-1="LENDING_INSTRMNT_CD" data-val-1="">All</option>
 				<option value="MIF" data-att-1="LENDING_INSTRMNT_CD" data-val-1="MIF">MIF</option>
 				<option value="SMP" data-att-1="LENDING_INSTRMNT_CD" data-val-1="SMP">SMP</option>
 			  </select>
@@ -364,26 +366,7 @@
 				<option selected value="0" data-att-1="FUND_CD" data-val-1="" >All funds</option>
 				<option value="-1" data-att-1="FUND_CD" data-val-1="MSE,MSF">MSE+MSF</option>
 				<option value="-2" data-att-1="FUND_CD" data-val-1="!MSE,MSF">Not MSE/MSF</option>
-				<option value="15" data-att-1="FUND_CD" data-val-1="MSE">MSE</option>
-				<option value="16" data-att-1="FUND_CD" data-val-1="MSF">MSF</option>
-				<option value="1" data-att-1="FUND_CD" data-val-1="AUS">AUS</option>
-				<option value="2" data-att-1="FUND_CD" data-val-1="CCF">CCF</option>
-				<option value="3" data-att-1="FUND_CD" data-val-1="COF">COF</option>
-				<option value="4" data-att-1="FUND_CD" data-val-1="CTF">CTF</option>
-				<option value="5" data-att-1="FUND_CD" data-val-1="FEP">FEP</option>
-				<option value="6" data-att-1="FUND_CD" data-val-1="FMM">FMM</option>
-				<option value="7" data-att-1="FUND_CD" data-val-1="ICR">ICR</option>
-				<option value="8" data-att-1="FUND_CD" data-val-1="ITC">ITC</option>
-				<option value="9" data-att-1="FUND_CD" data-val-1="JPO">JPO</option>
-				<option value="10" data-att-1="FUND_CD" data-val-1="KPS">KPS</option>
-				<option value="11" data-att-1="FUND_CD" data-val-1="MAG">MAG</option>
-				<option value="12" data-att-1="FUND_CD" data-val-1="MCB">MCB</option>
-				<option value="13" data-att-1="FUND_CD" data-val-1="MHR">MHR</option>
-				<option value="14" data-att-1="FUND_CD" data-val-1="MPF">MPF</option>
-				<option value="17" data-att-1="FUND_CD" data-val-1="NDV">NDV</option>
-				<option value="18" data-att-1="FUND_CD" data-val-1="ORC">ORC</option>
-				<option value="19" data-att-1="FUND_CD" data-val-1="SCX">SCX</option>
-				<option value="20" data-att-1="FUND_CD" data-val-1="TDF">TDF</option>
+
 			  </select>
 			</div>
 			
@@ -397,27 +380,32 @@
 			  </div>
 			  <select class="custom-select" id="GSELECT_FINANCIAL_INSTRUMENT_CD_SELECT">
 				<option selected value="0" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="" >All instruments</option>
-				<option value="1" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="AUS">AUS</option>
-				<option value="1" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="ADM">ADM</option>
-				<option value="2" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="EQU">EQU</option>
-				<option value="3" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="GRT">GRT</option>
-				<option value="4" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="MIF">MIF</option>
-				<option value="5" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="PSL">PSL</option>
-				<option value="6" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="SEP">SEP</option>
-				<option value="7" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="TCC">TCC</option>
-				<option value="8" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="TCN">TCN</option>
+				<option selected value="-1" data-att-1="FINANCIAL_INSTRUMENT_CD" data-val-1="!ADM" >All except ADM</option>
 			  </select>
 			</div>			
 
   		  <div class="input-group input-group-sm mb-2">
 			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_OPERATION_SPECIALIST">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Operation IDB Specialist / Team leader" data-content="IDB specialist Team leader from the last historic record from convergence."><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; IDB specialist</label>
+			  </div>
+			  <select class="custom-select" id="GSELECT_OPERATION_SPECIALIST">
+				<option selected value="0" data-att-1="OPERATION_SPECIALIST" data-val-1="">All</option>
+			  </select>
+			</div>
+
+  		  <div class="input-group input-group-sm mb-2">
+			  <div class="input-group-prepend">
 				<label class="input-group-text" for="GSELECT_STATUS_CD_DIC">
-				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Last status of December help" data-content="Status of the operation during the last 'End of Month' balance."><span class="fas fa-info-circle fa-xs"></span></a>
-				&nbsp; Last status (Dic)</label>
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Last status of December help" data-content="Status of the operation during the last 'End of Month' balance of December."><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; Last status (Dec)</label>
 			  </div>
 			  <select class="custom-select" id="GSELECT_STATUS_CD_DIC">
-				<option selected value="0" data-att-1="STATUS_CD_DIC" data-val-1="">Todos</option>
-				<option value="2" data-att-1="STATUS_CD_DIC" data-val-1="CA">SI Signed</option>
+				<option selected value="0" data-att-1="STATUS_CD_DIC" data-val-1="">All</option>
+				<option value="-1" data-att-1="STATUS_CD_DIC" data-val-1="!CA,DE,CO">All except CA DE CO</option>
+				<option value="-2" data-att-1="STATUS_CD_DIC" data-val-1="CA,DE,CO">Only CA DE CO</option>				
+				<option value="2" data-att-1="STATUS_CD_DIC" data-val-1="SI">SI Signed</option>
 				<option value="3" data-att-1="STATUS_CD_DIC" data-val-1="EL">EL Eligible</option>
 				<option value="4" data-att-1="STATUS_CD_DIC" data-val-1="AF">AF Approved and Funded</option>
 				<option value="5" data-att-1="STATUS_CD_DIC" data-val-1="EF">EF Effective</option>
@@ -437,36 +425,36 @@
 		<table class="table table-sm" id="totalsTable">
 		  <thead>
 			<tr>
-			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Number of operations concerned by the filters either at first balance or last of the 2019 year.">
+			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Number of operations concerned by the filters either at first balance or last of the 2020 year.">
 				<a href="#" title="LifeCycle Chart" id="lifecycle_chart" data-toggle="chartWindow" data-target="#chartModalWindow" ><span class="fas fa-chart-pie fa-xs"></span>
 				<span id='nbTransactions'>x</span> App.</a>
 			  </th>
-			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Filtering values concerning the financial balance of end of month (EOM) of Dicember 2018. In case of new created project, it will be the first official end of month balance of creation during 2019.">12/31/2018*</th>
-			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Filtering values concerning the financial balance of end of month (EOM) of Dicember 2019 o del ultimo possible segun la fecha de hoy.">12/31/2019*</th>
-			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Delta o difference between the two previous columns: representing the evolution during 2019. Hover the mouse over value to get more details about positives and negatives deltas.">&#x394; 2019</th>
+			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Filtering values concerning the financial balance of end of month (EOM) of December 2019. In case of new created project, it will be the first official end of month balance of creation during 2020.">12/31/2019*</th>
+			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Filtering values concerning the financial balance of end of month (EOM) of December 2020 o del ultimo possible segun la fecha de hoy.">12/31/2020*</th>
+			  <th scope="col" data-toggle="tooltip" data-placement="top" title="Delta o difference between the two previous columns: representing the evolution during 2020. Hover the mouse over value to get more details about positives and negatives deltas.">&#x394; 2020</th>
 			</tr>
 		  </thead>
 		  <tbody>
 			<tr>
-			  <th scope="row" data-toggle="tooltip" data-placement="right" title="Sum of current approved amounts for the operations concerned by the filters either at first balance or last of the 2019 year.">APPRV</th>
+			  <th scope="row" data-toggle="tooltip" data-placement="right" title="Sum of current approved amounts for the operations concerned by the filters either at first balance or last of the 2020 year.">APPRV</th>
 			  <td id='appvr-1'>0</td>
 			  <td id='appvr-2'>0</td>
 			  <td id='appvr-3'>0</td>
 			</tr>
 			<tr>
-			  <th scope="row" data-toggle="tooltip" data-placement="right" title="Sum of undisbursed amounts for the operations concerned by the filters either at first balance or last of the 2019 year.">UNDISB</th>
+			  <th scope="row" data-toggle="tooltip" data-placement="right" title="Sum of undisbursed amounts for the operations concerned by the filters either at first balance or last of the 2020 year.">UNDISB</th>
 			  <td id='undisb-1'>0</td>
 			  <td id='undisb-2'>0</td>
 			  <td id='undisb-3'>0</td>
 			</tr>
 			<tr>
-			  <th scope="row" data-toggle="tooltip" data-placement="right" title="Sum of disbursed amounts for the operations concerned by the filters either at first balance or last of the 2019 year.">DISB</th>
+			  <th scope="row" data-toggle="tooltip" data-placement="right" title="Sum of disbursed amounts for the operations concerned by the filters either at first balance or last of the 2020 year.">DISB</th>
 			  <td id='disb-1'>0</td>
 			  <td id='disb-2'>0</td>
 			  <td id='disb-3'>0</td>
 			</tr>
 			<tr>
-			  <th scope="row" data-toggle="tooltip" data-placement="right" title="Sum of cancelled amounts for the operations concerned by the filters either at first balance or last of the 2019 year.">CANCL</th>				
+			  <th scope="row" data-toggle="tooltip" data-placement="right" title="Sum of cancelled amounts for the operations concerned by the filters either at first balance or last of the 2020 year.">CANCL</th>				
 			  <td id='cncl-1'>0</td>
 			  <td id='cncl-2'>0</td>
 			  <td id='cncl-3'>0</td>
@@ -645,8 +633,8 @@
 					<option value="A" data-att-1="value" data-val-1="A">Sum of approval USD</option>
 					<option value="U" data-att-1="value" data-val-1="U">Sum of undisbursed USD</option>
 					<option value="C" data-att-1="value" data-val-1="C">Sum of cancelled USD</option>
-					<option value="DELTA_DISBURSED_AMNT_USEQ" data-att-1="value" data-val-1="DELTA_DISBURSED_AMNT_USEQ">Total of disbursed during 19 USD</option>
-					<option value="DELTA_CANCELLED_AMNT_USEQ" data-att-1="value" data-val-1="DELTA_CANCELLED_AMNT_USEQ">Total of cancelled during 19 USD</option>
+					<option value="DELTA_DISBURSED_AMNT_USEQ" data-att-1="value" data-val-1="DELTA_DISBURSED_AMNT_USEQ">Total of disbursed during 2020 USD</option>
+					<option value="DELTA_CANCELLED_AMNT_USEQ" data-att-1="value" data-val-1="DELTA_CANCELLED_AMNT_USEQ">Total of cancelled during 2020 USD</option>
 				  </select>
 				</div>
 				

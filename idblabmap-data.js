@@ -5,7 +5,7 @@ var operations;
 var OPERATIONS_GEOJSON = (window.location.href.indexOf("file:")==-1 || true ?
 "https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/operations-anonymized-2019.geojson"
 :
-"./DATA/bidlab2019October.geojson");
+"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/operations-anonymized-2019.geojson");
 
 //GET CNTRY LIST from all operations
 var ISO_A3_list = [];
@@ -14,7 +14,7 @@ var countriesLayer;
 var COUTRIES_GEOJSON = (window.location.href.indexOf("file:")==-1 || true ?
 "https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/countries2.geojson"
 :
-"./DATA/countries2.geojson");
+"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/countries2.geojson");
 //Filter countries by CNTRY LIST
 
 //UPDATE
@@ -48,6 +48,10 @@ var markerOfOneIcon= new L.DivIcon({ html: '<div><span>1</span></div>', classNam
 var mydatatablejson = [];
 
 //***********************************************************************
+var specialists = [];
+var funds = [];
+var specialists = [];
+var fin_instruments = [];
 
 $.getJSON(OPERATIONS_GEOJSON)
 	.done(function(data) {
@@ -73,6 +77,53 @@ $.getJSON(OPERATIONS_GEOJSON)
 				if (f.properties.C12)
 					f.properties.C12 *= -1;
 			}
+			
+			//add specialist options to the select
+			if (!funds.includes(f.properties["FUND_CD"])) {
+				funds.push(f.properties["FUND_CD"]);
+			}
+			if (!specialists.includes(f.properties["OPERATION_SPECIALIST"])) {
+				specialists.push(f.properties["OPERATION_SPECIALIST"]);
+			}
+			if (!fin_instruments.includes(f.properties["FINANCIAL_INSTRUMENT_CD"])) {
+				fin_instruments.push(f.properties["FINANCIAL_INSTRUMENT_CD"]);
+			}
+
+		});
+		
+		//add specialist options to the select
+		specialists.sort();
+		funds.sort();
+		fin_instruments.sort();
+		
+		$.each(funds, function (i, item) {
+			//console.log(item);
+			$('#GSELECT_FUND_CD_SELECT').append($('<option>', { 
+				value: item,
+				text : (item == null ? "Empty":item),
+				'data-att-1' : "FUND_CD",
+				'data-val-1' : (item == null ? "null value not supported yet" : item)
+			}));
+		});
+		
+		$.each(specialists, function (i, item) {
+			//console.log(item);
+			$('#GSELECT_OPERATION_SPECIALIST').append($('<option>', { 
+				value: item,
+				text : (item == null ? "Empty":item),
+				'data-att-1' : "OPERATION_SPECIALIST",
+				'data-val-1' : (item == null ? "null value not supported yet" : item)
+			}));
+		});
+		
+		$.each(fin_instruments, function (i, item) {
+			//console.log(item);
+			$('#GSELECT_FINANCIAL_INSTRUMENT_CD_SELECT').append($('<option>', { 
+				value: item,
+				text : (item == null ? "Empty":item),
+				'data-att-1' : "FINANCIAL_INSTRUMENT_CD",
+				'data-val-1' : (item == null ? "null value not supported yet" : item)
+			}));
 		});
 		
 		operations = data;
@@ -100,6 +151,7 @@ $.getJSON(OPERATIONS_GEOJSON)
         countriesLayer.addTo(map);
         map.addLayer(operationsMarkers);
 		L.control.layers(null, {'Numbers':operationsMarkers, 'Paises':countriesLayer}).addTo(map);	
+		
 		$('.custom-select').trigger('change');
 	});
 
@@ -243,7 +295,7 @@ function joinData() {
 
 		});
 
-		popupTableContent = '<a href="#" onclick="filter_country(\''+ISO_A3_FILTER+'\');"><div class="custom-title" id="custom-title-id"><span class="fas fa-filter fa-xs"></span></a><a href="./story?country='+feature.feature.properties.ADMIN+'&ISO_A3='+feature.feature.properties.ISO_A3+'"> *Country page* </a>' + feature.feature.properties.ADMIN + ' : total ' + counter + ' (including ' + counterNew + ' newly approved and ' + counterClosed + ' closed)</div>\n'+
+		popupTableContent = '<a href="#" onclick="filter_country(\''+ISO_A3_FILTER+'\');"><div class="custom-title" id="custom-title-id"><span class="fas fa-filter fa-xs"></span></a><a href="./story.html?country='+feature.feature.properties.ADMIN+'&ISO_A3='+feature.feature.properties.ISO_A3+'"> *Country page* </a>' + feature.feature.properties.ADMIN + ' : total ' + counter + ' (including ' + counterNew + ' newly approved and ' + counterClosed + ' closed)</div>\n'+
           '<table class="table table-striped table-dark table-popup" id="custom-table-id">\n'+
             '<thead>\n'+
               '<tr>\n'+
@@ -318,7 +370,7 @@ $('.custom-select').change(function(e) {
 			//console.log(i + ') '+ prop + ' = ' + val + '?');
 			dirty = Filters.apply(prop, val) || dirty;
 		};
-		//Yoda condition :D
+		//Yoda condition :D, if red is your car... shall you process to the code!
 		if (0 != option_selected.val()) {
 			var ig = $(this).parents("div.input-group");
 			var label = ig.find('label');
@@ -331,7 +383,7 @@ $('.custom-select').change(function(e) {
 		};
 	});
 
-	if (dirty == 1) {
+	if (dirty == 1 && typeof operations !== 'undefined') {	//sometimes trigger a change before data is loaded, check undefined to avoid error
 		Filters.updateInfoText();
 		joinData();
 	}
