@@ -11,11 +11,11 @@ var OPERATIONS_GEOJSON = (window.location.href.indexOf("file:")==-1 || true ?
 );
 
 var COUTRIES_GEOJSON = (window.location.href.indexOf("file:")==-1 || true ?
-"https://raw.githubusercontent.com/collaer/idblabmap/master/DATA/countries2.geojson"
+"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/countries2.geojson"
 //"./DATA/countries2.geojson"
 :
 //"./DATA/countries2.geojson"
-"https://raw.githubusercontent.com/collaer/idblabmap/master/DATA/countries2.geojson");
+"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/countries2.geojson");
 
 config = function() {
 	//console.log('fix YEAR');
