@@ -1,9 +1,4 @@
 var operations;
-var OPERATIONS_GEOJSON = (window.location.href.indexOf("file:")==-1 || true ?
-//"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/operations-anonymized-2020.geojson"
-"./DATA/operations-snapshot-2020.geojson"
-:
-"./DATA/operations-snapshot-2020.geojson");
 
 function countryFilter(feature, layer) {
   if (feature.properties.ISO_A3 === ISO_A3_FILTER) return true;
@@ -33,7 +28,7 @@ getEmptyOperationSummary = function() {
 	};
 
 	var operationsSummaryTemplate= {
-		year:2020,
+		year:YEAR,
 		country:'',
 		TOTAL:0,
 		WAS_CLOSED:0,
@@ -86,7 +81,7 @@ getEmptyOperationSummary = function() {
 var refreshOperationSummary=function(jsonOperations, Country) {
 	operationsSummary = getEmptyOperationSummary();
 	
-	operationsSummary.year = '2020';
+	operationsSummary.year = YEAR;
 	operationsSummary.country = Country;
 	
 	jsonOperations.forEach(
@@ -291,7 +286,16 @@ var updateStory = function(ISO_A3, Country) {
 	
 };
 
+var specialists = [];
+var funds = [];
+var fundsList4Chart = [];
+var fin_instruments = [];
+var fin_instrumentsList4Chart = [];
+
 $(document).ready(function () {
+	
+	//execute config defined in idblabmap-config.js
+	config();
 	
 	$('#sidebarCollapse').on('click', function () {
 		$('#sidebar').toggleClass('active');
@@ -325,7 +329,31 @@ $(document).ready(function () {
 				if (f.properties.C12)
 					f.properties.C12 *= -1;
 			}
+			if (!funds.includes(f.properties["FUND_CD"])) {
+				funds.push(f.properties["FUND_CD"]);
+			}
+			if (!specialists.includes(f.properties["OPERATION_SPECIALIST"])) {
+				specialists.push(f.properties["OPERATION_SPECIALIST"]);
+			}
+			if (!fin_instruments.includes(f.properties["FINANCIAL_INSTRUMENT_CD"])) {
+				fin_instruments.push(f.properties["FINANCIAL_INSTRUMENT_CD"]);
+			}	
 		});
+		
+		specialists.sort();
+		funds.sort();
+		fin_instruments.sort();
+		
+		$.each(funds, function (i, item) {
+			fundsList4Chart.push({ code: item, label: item });
+		});
+	
+		$.each(fin_instruments, function (i, item) {
+			fin_instrumentsList4Chart.push({ code: item, label: item });
+		});
+		
+		graphFields['FUND_CD']['values'] = fundsList4Chart;
+		graphFields['FINANCIAL_INSTRUMENT_CD']['values'] = fin_instrumentsList4Chart;
 		
 		operations = data;
 		

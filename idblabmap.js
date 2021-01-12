@@ -57,20 +57,20 @@
 			}
 			,updateHTML: function() {
 				$('#nbTransactions').html(this.approved.counter);
-				$(this.approved.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current approved amounts in the End Of Month balance of last day of 2019 ' + new Money(this.approved.val_year0) + ' USD.">' + new MoneyHumanReadable(this.approved.val_year0) + '</div>'));
-				$(this.approved.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current approved amounts in the End Of Month balance of last day of 2020 ' + new Money(this.approved.val_year1) + ' USD.">' + new MoneyHumanReadable(this.approved.val_year1) + '</div>'));
+				$(this.approved.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current approved amounts in the End Of Month balance of last day of ' + YEARO + new Money(this.approved.val_year0) + ' USD.">' + new MoneyHumanReadable(this.approved.val_year0) + '</div>'));
+				$(this.approved.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current approved amounts in the End Of Month balance of last day of ' + YEAR + new Money(this.approved.val_year1) + ' USD.">' + new MoneyHumanReadable(this.approved.val_year1) + '</div>'));
 				$(this.approved.getId(3)).html($('<div data-toggle="tooltip-dynamic" data-placement="right" title=" + ' + new Money(this.approved.delta_positif) + ' USD and ' + new Money(this.approved.delta_negatif) + ' USD.">' + new MoneyHumanReadable(this.approved.delta()) + ' <span class="fas fa-info-circle fa-xs"></span></div>'));
 
-				$(this.undisbursed.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current undisbursed amounts in the End Of Month balance of last day of 2019 ' + new Money(this.undisbursed.val_year0) + ' USD.">' + new MoneyHumanReadable(this.undisbursed.val_year0) + '</div>'));
-				$(this.undisbursed.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current undisbursed amounts in the End Of Month balance of last day of 2020 ' + new Money(this.undisbursed.val_year1) + ' USD.">' + new MoneyHumanReadable(this.undisbursed.val_year1) + '</div>'));
+				$(this.undisbursed.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current undisbursed amounts in the End Of Month balance of last day of ' + YEARO + new Money(this.undisbursed.val_year0) + ' USD.">' + new MoneyHumanReadable(this.undisbursed.val_year0) + '</div>'));
+				$(this.undisbursed.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current undisbursed amounts in the End Of Month balance of last day of ' + YEAR + new Money(this.undisbursed.val_year1) + ' USD.">' + new MoneyHumanReadable(this.undisbursed.val_year1) + '</div>'));
 				$(this.undisbursed.getId(3)).html($('<div data-toggle="tooltip-dynamic" data-placement="right" title=" + ' + new Money(this.undisbursed.delta_positif) + ' USD and ' + new Money(this.undisbursed.delta_negatif) + ' USD.">' + new MoneyHumanReadable(this.undisbursed.delta()) + ' <span class="fas fa-info-circle fa-xs"></span></div>'));
 				
-				$(this.disbursed.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current disbursed amounts in the End Of Month balance of last day of 2019 ' + new Money(this.disbursed.val_year0) + ' USD.">' + new MoneyHumanReadable(this.disbursed.val_year0) + '</div>'));
-				$(this.disbursed.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current disbursed amounts in the End Of Month balance of last day of 2020 ' + new Money(this.disbursed.val_year1) + ' USD.">' + new MoneyHumanReadable(this.disbursed.val_year1) + '</div>'));
+				$(this.disbursed.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current disbursed amounts in the End Of Month balance of last day of ' + YEARO + new Money(this.disbursed.val_year0) + ' USD.">' + new MoneyHumanReadable(this.disbursed.val_year0) + '</div>'));
+				$(this.disbursed.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current disbursed amounts in the End Of Month balance of last day of ' + YEAR + new Money(this.disbursed.val_year1) + ' USD.">' + new MoneyHumanReadable(this.disbursed.val_year1) + '</div>'));
 				$(this.disbursed.getId(3)).html($('<div data-toggle="tooltip-dynamic" data-placement="right" title=" + ' + new Money(this.disbursed.delta_positif) + ' USD and ' + new Money(this.disbursed.delta_negatif) + ' USD.">' + new MoneyHumanReadable(this.disbursed.delta()) + ' <span class="fas fa-info-circle fa-xs"></span></div>'));
 				
-				$(this.cancelled.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current cancelled amounts in the End Of Month balance of last day of 2019.">' + new MoneyHumanReadable(this.cancelled.val_year0) + '</div>'));
-				$(this.cancelled.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current cancelled amounts in the End Of Month balance of last day of 2020 or last one available (depend of current date).">' + new MoneyHumanReadable(this.cancelled.val_year1) + '</div>'));
+				$(this.cancelled.getId(1)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current cancelled amounts in the End Of Month balance of last day of ' + YEARO + '.">' + new MoneyHumanReadable(this.cancelled.val_year0) + '</div>'));
+				$(this.cancelled.getId(2)).html($('<div data-toggle="tooltip-dynamic" data-placement="top" title="Sum of current cancelled amounts in the End Of Month balance of last day of ' + YEAR + ' or last one available (depend of current date).">' + new MoneyHumanReadable(this.cancelled.val_year1) + '</div>'));
 				$(this.cancelled.getId(3)).html($('<div data-toggle="tooltip-dynamic" data-placement="right" title=" + ' + new Money(this.cancelled.delta_positif) + ' USD and ' + new Money(this.cancelled.delta_negatif) + ' USD.">' + new MoneyHumanReadable(this.cancelled.delta()) + ' <span class="fas fa-info-circle fa-xs"></span></div>'));
 				
 				$(function () {
@@ -180,6 +180,10 @@ $.urlParam = function(name){
 
 
 $(document).ready(function () {
+	
+	//execute config defined in idblabmap-config.js
+	config();
+	
 	$('#loadedAlert').hide();
 	
 	setTimeout(function(){

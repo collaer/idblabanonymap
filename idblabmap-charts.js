@@ -248,39 +248,11 @@ var graphFields = {
 	},
 	'FUND_CD' : {
 		label: 'Fund',
-		values: [
-			{ code: "AUS", label: "AUS" },
-			{ code: "CCF", label: "CCF" },
-			{ code: "COF", label: "COF" },
-			{ code: "CTF", label: "CTF" },
-			{ code: "FEP", label: "FEP" },
-			{ code: "FMM", label: "FMM" },
-			{ code: "ICR", label: "ICR" },
-			{ code: "ITC", label: "ITC" },
-			{ code: "JPO", label: "JPO" },
-			{ code: "KPS", label: "KPS" },
-			{ code: "MAG", label: "MAG" },
-			{ code: "MCB", label: "MCB" },
-			{ code: "MHR", label: "MHR" },
-			{ code: "MPF", label: "MPF" },
-			{ code: "MSE", label: "MSE" },
-			{ code: "MSF", label: "MSF" },
-			{ code: "NDV", label: "NDV" },
-			{ code: "ORC", label: "ORC" },
-			{ code: "SCX", label: "SCX" },
-			{ code: "TDF", label: "TDF" }]
+		values: [] //fundsList4Chart
 	},
 	'FINANCIAL_INSTRUMENT_CD' : {
 		label: 'Finan. Instr.',
-		values: [	
-			{ code: "ADM", label: "ADM" },
-			{ code: "EQU", label: "EQU" },
-			{ code: "GRT", label: "GRT" },
-			{ code: "MIF", label: "MIF" },
-			{ code: "PSL", label: "PSL" },
-			{ code: "SEP", label: "SEP" },
-			{ code: "TCC", label: "TCC" },
-			{ code: "TCN", label: "TCN" }]
+		values: [] //fin_instrumentsList4Chart
 	}
 };
 
@@ -316,8 +288,8 @@ var idblabchart = {
 	datas: [],
 	labels: [],
 	filters: [],
-	titleBase: "IDB Lab Ap. 20",
-	title: "IDB Lab Ap. 20",
+	titleBase: "IDB Lab Ap. " + YEAR,
+	title: "IDB Lab Ap. " + YEAR,
 	suffixeStartOfYear: " (S)",
 	suffixeEndOfYear: " (E)",
 	charts:{},
@@ -477,7 +449,7 @@ var idblabchart = {
 			for (idx in this.labels[1]) {
 				datasets.push(
 					{
-						//labels: 'Start 20', //this.labels[0],
+						//labels: 'Start ' + YEAR , //this.labels[0],
 						label:  this.codeLabels[1][idx] + this.suffixeStartOfYear, //this.labels[1][idx],
 						data: this.datas[0][idx],
 						stack: 0
@@ -486,7 +458,7 @@ var idblabchart = {
 				if (!oneStack) {
 					datasets.push(
 						{
-							//labels: 'End of 20', //this.labels[0],
+							//labels: 'End of ' + YEAR, //this.labels[0],
 							label: this.codeLabels[1][idx] + this.suffixeEndOfYear, //this.labels[1][idx],
 							data: this.datas[1][idx],
 							stack: 1
@@ -497,17 +469,17 @@ var idblabchart = {
 		} else {
 			if (!oneStack) {
 				datasets = [{
-							label: 'Start 20', //this.labels[0],
+							label: 'Start ' + YEAR, //this.labels[0],
 							data: this.datas[0][0],
 							stack: 0
 						},{
-							label: 'End of 20', //this.labels[0],
+							label: 'End of ' + YEAR, //this.labels[0],
 							data: this.datas[1][0],
 							stack: 1
 						}];
 			} else {
 				datasets = [{
-							label: '20',
+							label: YEAR,
 							data: this.datas[0][0],
 							stack: 0
 						}];
@@ -622,7 +594,7 @@ var idblabchart = {
 		
 		this.labels = [
 			['Apprvd', 'Undisb.', 'Disb.', 'Cancel.', 'Anomaly'],
-			['31dec-19','Jan','Fev','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec-20' ]
+			['31dec-' + YEARO,'Jan','Fev','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec-' + YEAR ]
 		];
 		
 		this.data = [[],[],[],[],[]];
@@ -772,7 +744,7 @@ var idblabchart = {
 				},
 				title: {
 					display: true,
-					text: '2020 IDB Lab aggregated approvals (using currents filters).',
+					text: YEAR + ' IDB Lab aggregated approvals (using currents filters).',
 				},
 			}
 		});
@@ -800,7 +772,7 @@ var idblabchart = {
 		
 		this.labels = [
 			['Apprvd', 'Undisb.', 'Disb.', 'Cancel.', 'Anomaly'],
-			['31dec-19','Jan','Fev','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec-20' ]
+			['31dec-'+YEARO,'Jan','Fev','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec-'+YEAR ]
 		];
 		
 		this.data = [[],[],[],[],[]];
@@ -983,7 +955,7 @@ var idblabchart = {
 				},
 				title: {
 					display: true,
-					text: '2020 IDB Lab ' + operation.PROJECT_NUMBER + ', approval ' + operation.OPERATION_NUMBER,
+					text: YEAR + ' IDB Lab ' + operation.PROJECT_NUMBER + ', approval ' + operation.OPERATION_NUMBER,
 				}
 			}
 		});

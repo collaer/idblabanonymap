@@ -2,19 +2,12 @@
 //INITIALISATION
 //GET AJAX operations DATA
 var operations;
-var OPERATIONS_GEOJSON = (window.location.href.indexOf("file:")==-1 || true ?
-"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/operations-anonymized-2019.geojson"
-:
-"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/operations-anonymized-2019.geojson");
 
 //GET CNTRY LIST from all operations
 var ISO_A3_list = [];
 //GET AJAX countries polygons DATA
 var countriesLayer;
-var COUTRIES_GEOJSON = (window.location.href.indexOf("file:")==-1 || true ?
-"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/countries2.geojson"
-:
-"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/countries2.geojson");
+
 //Filter countries by CNTRY LIST
 
 //UPDATE
@@ -50,8 +43,9 @@ var mydatatablejson = [];
 //***********************************************************************
 var specialists = [];
 var funds = [];
-var specialists = [];
+var fundsList4Chart = [];
 var fin_instruments = [];
+var fin_instrumentsList4Chart = [];
 
 $.getJSON(OPERATIONS_GEOJSON)
 	.done(function(data) {
@@ -96,16 +90,6 @@ $.getJSON(OPERATIONS_GEOJSON)
 		funds.sort();
 		fin_instruments.sort();
 		
-		$.each(funds, function (i, item) {
-			//console.log(item);
-			$('#GSELECT_FUND_CD_SELECT').append($('<option>', { 
-				value: item,
-				text : (item == null ? "Empty":item),
-				'data-att-1' : "FUND_CD",
-				'data-val-1' : (item == null ? "null value not supported yet" : item)
-			}));
-		});
-		
 		$.each(specialists, function (i, item) {
 			//console.log(item);
 			$('#GSELECT_OPERATION_SPECIALIST').append($('<option>', { 
@@ -116,6 +100,17 @@ $.getJSON(OPERATIONS_GEOJSON)
 			}));
 		});
 		
+		$.each(funds, function (i, item) {
+			//console.log(item);
+			$('#GSELECT_FUND_CD_SELECT').append($('<option>', { 
+				value: item,
+				text : (item == null ? "Empty":item),
+				'data-att-1' : "FUND_CD",
+				'data-val-1' : (item == null ? "null value not supported yet" : item)
+			}));
+			fundsList4Chart.push({ code: item, label: item });
+		});
+		
 		$.each(fin_instruments, function (i, item) {
 			//console.log(item);
 			$('#GSELECT_FINANCIAL_INSTRUMENT_CD_SELECT').append($('<option>', { 
@@ -124,8 +119,12 @@ $.getJSON(OPERATIONS_GEOJSON)
 				'data-att-1' : "FINANCIAL_INSTRUMENT_CD",
 				'data-val-1' : (item == null ? "null value not supported yet" : item)
 			}));
+			fin_instrumentsList4Chart.push({ code: item, label: item });
 		});
 		
+		graphFields['FUND_CD']['values'] = fundsList4Chart;
+		graphFields['FINANCIAL_INSTRUMENT_CD']['values'] = fin_instrumentsList4Chart;
+
 		operations = data;
 		
 		loadCountryList(operations);

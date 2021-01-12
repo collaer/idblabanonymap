@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>IDB Lab 2020 Sub-operations Footprint Story</title>
+    <title>IDB Lab Approvals, country level</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
@@ -133,8 +133,8 @@
 			
 		<div style="padding-top:70px;padding-bottom:70px">
 			<div id="LEGACY_TEXT">
-				<h4 id="country">IDB Lab 2020</h4>
-				<h4 id="legacy">Sub-operations approved before 2020</h4>
+				<h4 id="country">IDB Lab {YEAR}</h4>
+				<h4 id="legacy">Sub-operations approved before {YEAR}</h4>
 				<p>
 				Retrieving data...
 				</p>
@@ -147,7 +147,7 @@
 
             <div class="line"></div>
 
-            <h4 id="legacy_MIF">IDB Lab Focus codes undisbursed amount evolution for legacies sub-operations approved before 2020</h4>
+            <h4 id="legacy_MIF">IDB Lab Focus codes undisbursed amount evolution for legacies sub-operations approved before {YEAR}</h4>
 			<p>
 				<div  class="chart-container" style="height:400px;">
 					<canvas id="chartCanvas_LEGACY_MIF"></canvas>
@@ -157,8 +157,8 @@
             <div class="line"></div>
 
             <div id="NEW_TEXT">
-				<h4 id="country">IDB Lab 2020</h4>
-				<h4 id="legacy">Sub-operations approved during 2020</h4>
+				<h4 id="country">IDB Lab {YEAR}</h4>
+				<h4 id="legacy">Sub-operations approved during {YEAR}</h4>
 				<p>
 				Retrieving data...
 				</p>
@@ -168,7 +168,7 @@
 					<canvas id="chartCanvas_NEW"></canvas>
 				</div>
 			</p>
-			<h4 id="legacy_MIF">IDB Lab Focus codes undisbursed amount evolution for newly approved sub-operations in 2020</h4>
+			<h4 id="legacy_MIF">IDB Lab Focus codes undisbursed amount evolution for newly approved sub-operations in {YEAR}</h4>
 			<p>
 				<div  class="chart-container" style="height:400px;">
 					<canvas id="chartCanvas_NEW_MIF"></canvas>
@@ -178,8 +178,8 @@
 
 
             <div id="TOTAL_TEXT">
-				<h4 id="country">IDB Lab 2020</h4>
-				<h4 id="legacy">All sub-operations 2020 footprint</h4>
+				<h4 id="country">IDB Lab {YEAR}</h4>
+				<h4 id="legacy">All sub-operations {YEAR} footprint</h4>
 				<p>
 				Retrieving data...
 				</p>
@@ -206,6 +206,7 @@
 			<div class="line"></div>
         </div>
 
+<script src="./idblabmap-config.js"></script>
 <script src="./idblabmap-filter.js"></script>
 <script src="./idblabmap-charts.js"></script>
 <script src="./idblabmap-story.js"></script>
