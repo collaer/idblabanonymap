@@ -352,8 +352,7 @@
 		  <div class="input-group input-group-sm mb-2">
 			  <div class="input-group-prepend">
 				<label class="input-group-text" for="GSELECT_FINANCIAL_INSTRUMENT_CD_SELECT">
-				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Fund" data-content="FINANCIAL_INSTRUMENT_CD from 'fin bal' 
-				"><span class="fas fa-info-circle fa-xs"></span></a>
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Fund" data-content="FINANCIAL_INSTRUMENT_CD from 'fin bal' of datawarehouse from convergence."><span class="fas fa-info-circle fa-xs"></span></a>
 				&nbsp; Instrument
 				</label>
 			  </div>
@@ -396,6 +395,15 @@
 				<option value="11" data-att-1="STATUS_CD_DIC" data-val-1="DE">DE Deleted</option>
 				<option value="12" data-att-1="STATUS_CD_DIC" data-val-1="ZZ">ZZ Not Defined</option>
 			  </select>
+			</div>
+			
+			<div class="input-group input-group-sm mb-2">
+			  <div class="input-group-prepend">
+				<label class="input-group-text" for="GSELECT_PROJECT_NUMBER">
+				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Exeption list" data-content="List of operation codes to remove from the map, separated by commas"><span class="fas fa-info-circle fa-xs"></span></a>
+				&nbsp; Exeption</label>
+			  </div>
+			  <input type = "text" class="custom-select" value="" data-val-1="!" data-att-1="PROJECT_NUMBER" id="GSELECT_PROJECT_NUMBER" />
 			</div>
   
 		  </div>

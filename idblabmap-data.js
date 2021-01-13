@@ -358,8 +358,10 @@ $('.custom-select').change(function(e) {
 	
 	$('div.input-group label').removeClass('text-white');
 	$('div.input-group select').removeClass('text-white');
+	$('div.input-group input').removeClass('text-white');
 	$('div.input-group label').removeClass('bg-dark');
 	$('div.input-group select').removeClass('bg-dark');
+	$('div.input-group input').removeClass('bg-dark');
 
 	$( ".custom-select option:selected" ).each(function() {   //$(e.currentTarget)[0];
 		var option_selected = $(this);
@@ -378,6 +380,25 @@ $('.custom-select').change(function(e) {
 			slect.addClass('text-white');
 			label.addClass('text-white');
 			slect.addClass('bg-dark');
+			label.addClass('bg-dark');
+		};
+	});
+	
+	$( "input.custom-select").each(function() {
+		var inputSelected = $(this);
+		//console.log(inputSelected);
+		var prop = inputSelected.data('att-1');
+		var val = inputSelected.val() == "" ? "" : inputSelected.data('val-1') + inputSelected.val();
+		//console.log( prop + ' = ' + val + '?');
+		dirty = Filters.apply(prop, val) || dirty;
+		if (0 != inputSelected.val()) {
+			var ig = $(this).parents("div.input-group");
+			var label = ig.find('label');
+			var input = ig.find('input');
+		
+			input.addClass('text-white');
+			label.addClass('text-white');
+			input.addClass('bg-dark');
 			label.addClass('bg-dark');
 		};
 	});

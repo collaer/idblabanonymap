@@ -99,6 +99,7 @@
 				,new FilterAttribute({attribute:'FINANCIAL_INSTRUMENT_CD',type:'='})
 				,new FilterAttribute({attribute:'FUND_CD',type:'IN'})
 				,new FilterAttribute({attribute:'OPERATION_SPECIALIST',type:'='})
+				,new FilterAttribute({attribute:'PROJECT_NUMBER',type:'IN'})
 			],
 			infoSelector : '#filters_info'
 		});
@@ -235,14 +236,16 @@ $(document).ready(function () {
 
 	});
 	
-	var setDefault = $.urlParam('STD-FILTERS') || $.urlParam('std-filters') || false;
+	var setDefault = $.urlParam('DEFAULT') || $.urlParam('default') || false;
 	if (setDefault) {
 		$("#GSELECT_FUND_CD_SELECT").val(-1);
 		$("#GSELECT_WAS_CLOSED").val(1);
+		$("#GSELECT_FINANCIAL_INSTRUMENT_CD_SELECT").val(-1);
 		
 	} else {
 		$("#GSELECT_FUND_CD_SELECT").val(0);
 		$("#GSELECT_WAS_CLOSED").val(0);
+		$("#GSELECT_FINANCIAL_INSTRUMENT_CD_SELECT").val(0);
 	}
 	
 	$("#GSELECT_STATUS_SELECT").val(0);
@@ -254,7 +257,7 @@ $(document).ready(function () {
 	$("#GSELECT_PRODUCT_CD").val(0);
 	$("#GSELECT_LENDING_INSTRMNT_CD").val(0);
 	$("#GSELECT_STATUS_CD_DIC").val(0);
-	$("#GSELECT_FINANCIAL_INSTRUMENT_CD_SELECT").val(0);
+	$("#GSELECT_OPERATION_SPECIALIST").val(0);
 	
 	$('#removeAllFilter').on('click', function () {
 		$("#GSELECT_STATUS_SELECT").val(0);
@@ -269,6 +272,7 @@ $(document).ready(function () {
 		$("#GSELECT_STATUS_CD_DIC").val(0);
 		$("#GSELECT_FUND_CD_SELECT").val(0);
 		$("#GSELECT_FINANCIAL_INSTRUMENT_CD_SELECT").val(0);		
+		$("#GSELECT_OPERATION_SPECIALIST").val(0);		
 		$('.custom-select').trigger('change');
 		if (idblabchart.charts['chartCanvas']) 
 			$('.custom-select-chart').trigger('change');
