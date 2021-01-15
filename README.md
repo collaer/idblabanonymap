@@ -1,4 +1,4 @@
-# IUDB Lab 2019 Geodashboard
+# Portfolio geodashboard
 
 Testing tools and solutions for building mockup vizualizations for country portfolio. 
 
