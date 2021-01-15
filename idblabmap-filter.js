@@ -51,7 +51,7 @@ var FilterAttribute = function(options){
 		options.showLabel = typeof options.showLabel === 'undefined' ? true : options.showLabel;
 		
         $.extend(vars , options);
-		console.log(vars);
+		//console.log(vars);
     };
  
      /*
