@@ -403,7 +403,9 @@
 				<a href="#" data-toggle="popover" data-trigger="focus" tabindex="0" title="Exeption list" data-content="List of operation codes to remove from the map, separated by commas"><span class="fas fa-info-circle fa-xs"></span></a>
 				&nbsp; Exeption</label>
 			  </div>
-			  <input type = "text" class="custom-select" value="" data-val-1="!" data-att-1="PROJECT_NUMBER" id="GSELECT_PROJECT_NUMBER" />
+			  <input type = "text" class="custom-select" 
+			  value="AUT/ME-0027-VE,ATN/CF-15302-RG,GRT/IM-18200-RG,GRT/CF-17630-RG,GRT/ME-17571-RG,ATN/CF-17936-RG,ATN/CF-17861-RG,GRT/IM-17908-RG,GRT/IM-17907-RG,ADM/MP-0045-RG,ADM/MP-0044-RG,ADM/MP-0043-RG,ADM/MP-0042-RG,ADM/MP-0039-RG,ADM/MP-0035-RG,ADM/MP-0034-RG,ADM/MP-0033-RG,ADM/MP-0031-RG,ADM/MP-0030-RG,ADM/MP-0029-RG,ADM/MP-0028-RG,ADM/MP-0027-RG,ADM/MP-0025-RG,ADM/MP-0024-RG,ADM/MP-0023-RG,ADM/MP-0022-RG,ADM/MP-0021-RG,ADM/MP-0020-RG,ADM/MP-0019-RG,ADM/MP-0018-RG,ADM/MP-0017-RG,ADM/MP-0016-RG,ADM/MP-0015-RG,ADM/MP-0012-RG,ADM/MP-0011-RG,ADM/MP-0010-RG,ADM/MP-0006-RG,ADM/MP-0005-RG,ADM/MP-0004-RG,ADM/MP-0003-RG,ADM/MP-0002-RG,ATN/CF-17303-RG,ADM/MP-0040-RG,ADM/MP-0041-RG,ATN/CF-10969-RG ,GRT/CF-17276-RG,GRT/CF-17277-HA,3498/MS-RG,2339/MS-PN,GRT/ME-16943-RG,ATC/ME-16144-GU,ATN/CF-15352-RG,ATN/CF-15490-RG,ATN/CF-14294-RG,ATN/CF-14942-RG,AUT/ME-0025-TT,AUT/ME-0026-UR,AUT/ME-0023-PR,AUT/ME-0024-SU,AUT/ME-0019-ME,AUT/ME-0020-NI,AUT/ME-0017-HO,AUT/ME-0018-JA,AUT/ME-0015-GY,AUT/ME-0016-HA,AUT/ME-0012-EC,AUT/ME-0013-ES,AUT/ME-0010-CR,AUT/ME-0011-DR,AUT/ME-0009-CH,AUT/ME-0006-BO,AUT/ME-0007-BR,AUT/ME-0005-BL,AUT/ME-0003-BA,AUT/ME-0004-BH,AUT/ME-0001-RG,AUT/ME-0002-AR,ATN/CF-16922-RG,ATN/CF-16351-RG,ATN/CF-16087-RG,ADM/MP-0038-RG,ATN/CF-15532-RG,ADM/MP-0036-RG,ADM/MP-0037-RG,ADM/MP-0014-RG,ADM/MP-0026-RG,ADM/MP-0032-RG,ADM/MP-0009-RG,ADM/MP-0013-RG,ADM/MP-0008-RG,ADM/MP-0001-RG,ADM/MP-0007-RG,ADM/MH-10298-RG" 
+			  data-val-1="!" data-att-1="OPERATION_NUMBER" id="GSELECT_PROJECT_NUMBER" />
 			</div>
   
 		  </div>
@@ -492,14 +494,14 @@
 					>
 						<thead>
 							<tr>
-								<th data-sortable="true" data-field="PROJECT_NUMBER"  data-formatter="linkProjectFormatter">Project</th>
-								<th data-sortable="true" data-visible="false" data-field="OPERATION_NUMBER" data-formatter="linkProjectFormatter">Operation</th>
-								<th data-sortable="true" data-visible="false" data-field="OPERATION_NAME" data-formatter="linkProjectFormatter">Op Title</th>
+								<th data-sortable="true" data-field="PROJECT_NUMBER"  data-formatter="linkProjectFormatter">Operation number</th>
+								<th data-sortable="true" data-visible="false" data-field="OPERATION_NUMBER" data-formatter="linkProjectFormatter">Approval number</th>
+								<th data-sortable="true" data-visible="false" data-field="OPERATION_NAME" data-formatter="linkProjectFormatter">Title</th>
 								<th data-sortable="true" data-visible="false" data-field="OPERATION_ABSTRACT" data-formatter="linkProjectFormatter">Description</th>
 								<th data-sortable="true" data-visible="false" data-field="OPERATION_SPECIALIST" data-formatter="linkProjectFormatter">Specialist</th>
 								<th data-sortable="true" data-visible="false" data-field="OPERATION_SPECIALIST_EMAIL" data-formatter="linkProjectFormatter">Spec Email</th>
 								<th data-sortable="true" data-visible="false" data-field="OPERATION_AGENCY" data-formatter="linkProjectFormatter">Executor</th>
-								<th data-sortable="true" data-field="OPERATION_NAME" data-formatter="linkProjectFormatter">Operation</th>
+								<th data-sortable="true" data-field="OPERATION_NAME" data-formatter="linkProjectFormatter">Operation name</th>
 								<th data-sortable="true" data-visible="false" data-field="BALANCE_DATE">Date</th>
 								<th data-sortable="true" data-field="STATUS">Status</th>
 								<th data-sortable="true" data-field="PRODUCT_CD">Product</th>
@@ -573,6 +575,15 @@
 					</span>
 				</button>
 
+				<button type="button" class="btn btn-info btn-sm btn-remove-filters" id="lifecycle_chart"
+				data-toggle="tooltip" data-placement="top" title="Reset to default monthly chart.">
+					<a href="#" title="LifeCycle Chart" id="lifecycle_chart2" data-toggle="chartWindow" data-target="#chartModalWindow"  >
+						<span class="fa-stack fa-xs">
+							<i class="fas fa-chart-pie fa-stack-2x" style="color:White"></i>
+						</span>
+					</a>
+				</button>
+	
 				<div class="input-group input-group-sm input-group-sm mb-2">
 				  <div class="input-group-prepend">
 					<label class="input-group-text">

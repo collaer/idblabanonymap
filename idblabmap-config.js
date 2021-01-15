@@ -4,18 +4,16 @@ var YEARO = '2019';
 var SMALLYEARO = '19';
 
 var OPERATIONS_GEOJSON = (window.location.href.indexOf("file:")==-1 || true ?
-"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/operations-anonymized-2019.geojson"
+//"https://raw.githubusercontent.com/collaer/idblabmap/master/DATA/operations-snapshot-2020.geojson"
+"./DATA/operations-snapshot-2020.geojson"
 :
-"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/operations-anonymized-2019.geojson"
-//"./DATA/operations-anonymized-2019.geojson"
-);
+"./DATA/operations-snapshot-2020.geojson");
 
 var COUTRIES_GEOJSON = (window.location.href.indexOf("file:")==-1 || true ?
-"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/countries2.geojson"
-//"./DATA/countries2.geojson"
+//"https://raw.githubusercontent.com/collaer/idblabmap/master/DATA/countries2.geojson"
+"./DATA/countries2.geojson"
 :
-//"./DATA/countries2.geojson"
-"https://raw.githubusercontent.com/collaer/idblabanonymap/master/DATA/countries2.geojson");
+"./DATA/countries2.geojson");
 
 config = function() {
 	//console.log('fix YEAR');

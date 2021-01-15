@@ -13,10 +13,11 @@ var FilterAttribute = function(options){
 		,type:''
 		,label:''
 		,value:''
+		,showLabel:true
     };
 	
 	this.getAttribute = function() { return vars.attribute; };
-	this.getLabel = function() { return vars.label; };
+	//this.getLabel = function() { return vars.label; };
 	this.getValue = function() { return vars.value; };
 	this.setValue = function(val) { return vars.value=val; };
 
@@ -47,8 +48,10 @@ var FilterAttribute = function(options){
 		options.label = options.label || 
 			createLabel(options);
 		
-        $.extend(vars , options);
+		options.showLabel = typeof options.showLabel === 'undefined' ? true : options.showLabel;
 		
+        $.extend(vars , options);
+		console.log(vars);
     };
  
      /*
@@ -56,7 +59,7 @@ var FilterAttribute = function(options){
      * Can be called outside class
      */
     this.getLabel = function(){
-		if (vars.value !== '')
+		if (vars.value !== '' && vars.showLabel)
 			return vars.label + ' ' + vars.value;
 		return false;
 	}

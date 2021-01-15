@@ -99,7 +99,7 @@
 				,new FilterAttribute({attribute:'FINANCIAL_INSTRUMENT_CD',type:'='})
 				,new FilterAttribute({attribute:'FUND_CD',type:'IN'})
 				,new FilterAttribute({attribute:'OPERATION_SPECIALIST',type:'='})
-				,new FilterAttribute({attribute:'PROJECT_NUMBER',type:'IN'})
+				,new FilterAttribute({attribute:'OPERATION_NUMBER',type:'IN',showLabel:false}) //exepciones False
 			],
 			infoSelector : '#filters_info'
 		});
@@ -223,7 +223,7 @@ $(document).ready(function () {
 	$(function () {
 	  $('[data-toggle="chartWindow"]').on('click', function(e){
 		chartWindow.toggle('show');
-		chart_id = ($(e.target).is('A') ? e.target.id : ($(e.target).parent().is('A') ? $(e.target).parent()[0].id : "none"));
+		chart_id = ($(e.target).is('A') ? e.target.id : ($(e.target).parent().is('A') ? $(e.target).parent()[0].id : "lifecycle_chart"));
 		idblabchart.draw("chartCanvas", chart_id, mydatatablejson, Filters.getInfoText());
 	  })
 	});

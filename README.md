@@ -2,12 +2,6 @@
 
 Testing tools and solutions for building vizualization tools for the lab.
 
-
-Live demo with anonyzed data here : https://collaer.github.io/idblabanonymap/geodashboard 
-
-**To see the code go to ***gh-pages*** branch of this repository.** 
-
-
 Using sample of great OpenSource solutions and libraries, and their dependencies:
 
  - Web and javascript libraries 
@@ -36,5 +30,5 @@ Using sample of great OpenSource solutions and libraries, and their dependencies
  - Intro
    - https://introjs.com/
 
- - Data, background mapping
+ - Data
    - http://openstreetmap.org/
