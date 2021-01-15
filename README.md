@@ -1,4 +1,4 @@
-# IDB Lab 2019 Geodashboard
+# Portfolio Geodashboard
 
 Live demo with anonyzed data here : https://collaer.github.io/idblabanonymap/geodashboard
 
