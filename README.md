@@ -1,6 +1,10 @@
 # IUDB Lab 2019 Geodashboard
 
-Testing tools and solutions for building vizualization tools for the lab.
+Testing tools and solutions for building mockup vizualizations for country portfolio. 
+
+Live demo with anonyzed data here : https://collaer.github.io/idblabanonymap/geodashboard 	
+
+**To see the code go to ***gh-pages*** branch of this repository.** 	
 
 Using sample of great OpenSource solutions and libraries, and their dependencies:
 
@@ -30,5 +34,5 @@ Using sample of great OpenSource solutions and libraries, and their dependencies
  - Intro
    - https://introjs.com/
 
- - Data
+ - Data (background mapping layer)
    - http://openstreetmap.org/
